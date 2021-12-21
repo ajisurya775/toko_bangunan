@@ -20,6 +20,7 @@ class CreateBarangTable extends Migration
             $table->integer('harga')->unsign();
             $table->unsignedBigInteger('kategori_id');
             $table->text('deskripsi');
+            $table->string('gambar',100);
             $table->timestamps();
             $table->softDeletes();
 

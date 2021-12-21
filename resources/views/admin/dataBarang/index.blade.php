@@ -13,7 +13,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="{{ route('pesanan-masuk')}}">Pesanan Masuk</a></li>
+                    <li><a href="#">Pesanan Masuk</a></li>
                     <li class="active">Data Barang</li>
                 </ol>
             </div>
@@ -27,11 +27,12 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-md-12">
+                @include('components.alert')
                 <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Data Barang</strong>
                             <div class="pull-right">
-                            <a href="{{ route('tambah-barang')}}" class="btn btn-success btn-sm">
+                            <a href="{{ route('tambah.barang')}}" class="btn btn-success btn-sm">
                                 <i class="fa fa-plus">Tambah Barang</i>
                             </a>
                             </div>
@@ -41,6 +42,7 @@
                     <thead>
                     <tr>
                         <th>No</th>
+                        <th>gambar</th>
                         <th>Nama Barang</th>
                         <th>Stok</th>
                         <th>Harga</th>
@@ -48,13 +50,15 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @forelse ($barang as $item)
                     <tr>
-                        <td>1</td>
-                        <td>Batu</td>
-                        <td>Stok</td>
-                        <td>Rp 3000</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td><img src="{{ url('data_barang/'.$item->gambar)}}" alt="" style="height: 50px; width: 50px;"></td>
+                        <td>{{ $item->nama_barang}}</td>
+                        <td>{{ $item->stok}}</td>
+                        <td>{{ $item->harga}}</td>
                         <td class="text-center">
-                        <a href="{{ route('tambah-varian')}}" class="btn btn-success btn-sm">
+                        <a href="#" class="btn btn-success btn-sm">
                         <i class="fa fa-plus"></i></a>
                         <a href="" class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i></a>
@@ -64,6 +68,9 @@
                         <i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
+                    @empty
+                        No Data
+                    @endforelse
                     </tbody>
                 </table>
             </div>

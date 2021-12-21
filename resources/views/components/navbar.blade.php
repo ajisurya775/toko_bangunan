@@ -12,23 +12,23 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="{{ route('dashboard')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="{{ route('/')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
                 <h3 class="menu-title">Menu</h3><!-- /.menu-title -->
                 <li>
-                    <a href="{{ route('pesanan-masuk')}}"> <i class="menu-icon fa fa-paper-plane" aria-hidden="true"></i>Pesanan Masuk </a>
+                    <a href="#"> <i class="menu-icon fa fa-paper-plane" aria-hidden="true"></i>Pesanan Masuk </a>
                 </li>
                 <li class="">
-                    <a href="{{ route('data-barang')}}"> <i class="menu-icon fa fa-server" aria-hidden="true"></i>Data Barang </a>
+                    <a href="{{ route('data.barang')}}"> <i class="menu-icon fa fa-server" aria-hidden="true"></i>Data Barang </a>
                 </li>
                 <li>
-                  <a href="{{ route('kategori')}}"> <i class="menu-icon fa fa-share-alt" aria-hidden="true"></i>Kategori </a>
+                  <a href="#"> <i class="menu-icon fa fa-share-alt" aria-hidden="true"></i>Kategori </a>
               </li>
               <li>
-                <a href="{{ route('jangkauan')}}"> <i class="menu-icon fa fa-map-marker" aria-hidden="true"></i>Jangkauan </a>
+                <a href="#"> <i class="menu-icon fa fa-map-marker" aria-hidden="true"></i>Jangkauan </a>
             </li>
                 <li>
-                    <a href="{{ route('laporan')}}"> <i class="menu-icon fa fa-address-book" aria-hidden="true"></i></i>Laporan Penjualan </a>
+                    <a href="#"> <i class="menu-icon fa fa-address-book" aria-hidden="true"></i></i>Laporan Penjualan </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -66,7 +66,10 @@
                     </a>
                     <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>Ganti Sandi</a>
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power -off"></i>Logout</a>
+                            <form id="logout-form" action="{{ route('logout')}}" method="POST">
+                                <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                            </form>
                     </div>
                 </div>
             </div>

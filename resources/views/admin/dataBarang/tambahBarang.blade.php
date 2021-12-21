@@ -30,44 +30,46 @@
                         <div class="card-header">
                             <strong class="card-title">Tambah Barang</strong>
                                 <div class="pull-right">
-                                    <a href="data_barang.html" class="btn btn-secondary btn-sm">
+                                    <a href="#" class="btn btn-secondary btn-sm">
                                         <i class="fa fa-undo">Back</i>
                                     </a>
                                 </div>
                         </div>
                         <div class="card-body">
                             <div class="col-md-4 offset-md-2">
-                                <form action="">
+                                <form action="{{ route('tambah.barang')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+
                                     <div class="form-grub">
                                         <label for="">Nama Barang</label>
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="barang" id="" class="form-control">
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Stok</label>
-                                        <input type="number" name="" id="" class="form-control">
+                                        <input type="number" name="stok" id="" class="form-control">
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Harga</label>
-                                        <input type="number" name="" id="" class="form-control">
+                                        <input type="number" name="harga" id="" class="form-control">
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Kategori</label>
-                                        <select name="" id="" class="form-control">
+                                        <select name="kategori" id="" class="form-control">
                                             <option value="">-Pilih</option>
-                                            <option value="">Listrik</option>
-                                            <option value="">Bahan Bangunan</option>
-                                            <option value="">Alat Bangunan</option>
+                                            @foreach ($kategori as $item)
+                                            <option value="{{ $item->id}}">{{ $item->nama_kategori}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                     <div class="col-md-4">
                                         <div class="form-grub">
                                             <label for="">Deskripsi Barang</label>
-                                            <textarea name="" class="form-control"  id="" cols="50" rows="5"></textarea>
+                                            <textarea name="deskripsi" class="form-control"  id="" cols="50" rows="5"></textarea>
                                         </div>
                                         <div class="form-grub">
                                             <label for="">Gambar</label>
-                                            <input type="file" name="" id="" class="form-control">
+                                            <input type="file" name="gambar" id="" class="form-control">
                                         </div>
                                         <br>
                                         <button type="Submit" class="btn btn-success">Simpan</button>
