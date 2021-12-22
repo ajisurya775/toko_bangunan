@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Kategori;
+use App\Models\Varian;
+use App\Http\Requests\Admin\Barang\Store;
 use Illuminate\Http\Request;
+use File;
 
 class BarangController extends Controller
 {
@@ -17,7 +20,9 @@ class BarangController extends Controller
     public function index()
     {
         $barang = Barang::latest()->paginate(5);
-        return view('admin.dataBarang.index', compact('barang'));
+        return view('admin.dataBarang.index', [
+            'barang'=>$barang
+        ]);
     }
 
     /**
@@ -38,9 +43,10 @@ class BarangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(store $request)
     {
         //
+        return $request;
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('data_barang'), $new_image);
@@ -65,9 +71,16 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(Barang $barang)
+    public function show(Request $request, $id)
     {
         //
+        $barang = Barang::find($id);
+        $kategori = Kategori::all();
+
+        return view('admin.dataBarang.edit', [
+            'barang'=>$barang,
+            'kategori'=>$kategori,
+        ]);
     }
 
     /**
@@ -76,9 +89,40 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barang)
+    public function edit(Request $request, $id)
     {
         //
+        if ($request->gambar <> "") {
+            $image = $request->file('gambar');
+            $new_image = rand().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('data_barang'), $new_image);
+
+            $gambar = Barang::where('id', $id)->first();
+            File::delete('data_barang/'.$gambar->gambar);
+
+            $barang = Barang::find($id);
+            $barang->nama_barang = $request->barang;
+            $barang->stok = $request->stok;
+            $barang->harga = $request->harga;
+            $barang->deskripsi = $request->deskripsi;
+            $barang->gambar = $new_image;
+            $barang->save();
+
+            $request->Session()->flash('success', "Data {$barang->nama_barang} Berhasil di ubah.!");
+            return redirect()->route('data.barang');
+        } else {
+            $barang = Barang::find($id);
+            $barang->nama_barang = $request->barang;
+            $barang->stok = $request->stok;
+            $barang->harga = $request->harga;
+            $barang->deskripsi = $request->deskripsi;
+            $barang->save();
+
+            $request->Session()->flash('success', "Data {$barang->nama_barang} Berhasil di ubah.!");
+            return redirect()->route('data.barang');
+        }
+        
+        
     }
 
     /**
@@ -99,8 +143,27 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy(Request $request, $id)
     {
         //
+        $barang = Barang::findOrFail($id);
+        $barang->forceDelete();
+
+        $varian = Varian::where('barang_id', $id)->get();
+        foreach ($varian as $item) {
+            File::delete('data_varian/'.$item->gambar_varian);
+        }
+        File::delete('data_barang/'.$barang->gambar);
+       
+
+        $request->Session()->flash('success',"Data berhasil di hapus");
+
+        return redirect()->route('data.barang');
+    }
+
+    public function detail($id)
+    {
+        $barang = Barang::find($id);
+        return view('admin.dataBarang.detail', compact('barang'));
     }
 }

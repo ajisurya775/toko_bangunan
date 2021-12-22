@@ -50,27 +50,30 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse ($barang as $item)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td><img src="{{ url('data_barang/'.$item->gambar)}}" alt="" style="height: 50px; width: 50px;"></td>
-                        <td>{{ $item->nama_barang}}</td>
-                        <td>{{ $item->stok}}</td>
-                        <td>{{ $item->harga}}</td>
-                        <td class="text-center">
-                        <a href="#" class="btn btn-success btn-sm">
-                        <i class="fa fa-plus"></i></a>
-                        <a href="" class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i></a>
-                        <a href="detail_barang.html" class="btn btn-primary btn-sm">
-                        <i class="fa fa-eye"></i></a>
-                        <a href="" class="btn btn-danger btn-sm">
-                        <i class="fa fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    @empty
-                        No Data
-                    @endforelse
+                    @foreach ($barang as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><img src="{{ url('data_barang/'.$item->gambar)}}" alt="" style="height: 50px; width: 50px;"></td>
+                            <td>{{ $item->nama_barang}}</td>
+                            <td>{{ $item->stok}}</td>
+                            <td>Rp {{ $item->harga}}</td>
+                            <td class="text-center">
+                            <a href="{{ route('tambah.varian',$item->id)}}" class="btn btn-success btn-sm">
+                                <i class="fa fa-plus"></i></a>
+                            <a href="{{ route('edit.barang',$item->id)}}" class="btn btn-warning btn-sm">
+                                <i class="fa fa-edit"></i></a>
+                            <a href="{{ route('detail.barang',$item->id)}}" class="btn btn-primary btn-sm">
+                                <i class="fa fa-eye"></i></a>
+                            <form action="{{ route('hapus.barang',$item->id)}}" method="POST" class="d-inline" onsubmit="return confirm('apakah anda yakin untuk mengahapus data?')">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

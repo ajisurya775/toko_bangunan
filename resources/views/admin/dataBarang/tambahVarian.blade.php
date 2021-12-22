@@ -29,35 +29,32 @@
                         <div class="card-header">
                             <strong class="card-title">Tambah Varian</strong>
                                 <div class="pull-right">
-                                    <a href="data_barang.html" class="btn btn-secondary btn-sm">
+                                    <a href="{{ route('data.barang')}}" class="btn btn-secondary btn-sm">
                                         <i class="fa fa-undo">Back</i>
                                     </a>
                                 </div>
                         </div>
                         <div class="card-body">
                             <div class="col-md-4 offset-md-4">
-                                <form action="">
+                                <form action="{{ route('tambah.varian',$barang->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('post')
                                     <div class="form-grub">
-                                        <label for="">Nama Varian Barang</label>
-                                        <input type="text" name="" id="" class="form-control">
+                                        <label for="">Nama Varian {{ $barang->nama_barang}}</label>
+                                        <input type="text" name="varian" id="" class="form-control">
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Stok</label>
-                                        <input type="number" name="" id="" class="form-control">
+                                        <input type="number" name="stok_varian" id="" class="form-control">
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Harga</label>
-                                        <input type="number" name="" id="" class="form-control">
+                                        <input type="number" name="harga_varian" id="" class="form-control">
                                     </div>
-                                
-                                        <div class="form-grub">
-                                            <label for="">Deskripsi Barang</label>
-                                            <textarea name="" class="form-control"  id="" cols="10" rows="5"></textarea>
-                                        </div>
-                                        <div class="form-grub">
-                                            <label for="">Gambar</label>
-                                            <input type="file" name="" id="" class="form-control">
-                                        </div>
+                                    <div class="form-grub">
+                                        <label for="">Gambar</label>
+                                        <input type="file" name="gambar_varian" id="" class="form-control">
+                                     </div>
                                         <br>
                                         <button type="Submit" class="btn btn-success">Simpan</button>
                                 </form>

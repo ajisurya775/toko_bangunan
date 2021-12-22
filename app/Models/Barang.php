@@ -19,6 +19,10 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+    public function Varian(): BelongsTo
+    {
+        return $this->belongsTo(Varian::class);
+    }
 
 
 }

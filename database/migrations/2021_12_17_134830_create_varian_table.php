@@ -16,7 +16,8 @@ class CreateVarianTable extends Migration
         Schema::create('varian', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('barang_id');
-            $table->char('varian',100);
+            $table->string('nama_varian',100);
+            $table->integer('stok_varian')->unsign();
             $table->integer('harga_varian')->unsign();
             $table->char('gambar_varian',100);
             $table->timestamps();
