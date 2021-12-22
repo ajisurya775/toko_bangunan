@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Barang;
+namespace App\Http\Requests\Admin\Varian;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
@@ -25,12 +25,10 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'nama_barang'=>'required|string',
-            'stok'=>'required',
-            'harga'=>'required',
-            'kategori_id'=>'required',
-            'deskripsi'=>'required',
-            'gambar'=>'required|mimes:jpg,bmp,png|size:max:2048'
+            'nama_varian'=>'required',
+            'stok_varian'=>'required',
+            'harga_varian'=>'required',
+            'gambar_varian'=>'required'
         ];
     }
 }

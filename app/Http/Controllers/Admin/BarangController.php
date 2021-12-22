@@ -46,16 +46,16 @@ class BarangController extends Controller
     public function store(store $request)
     {
         //
-        return $request;
+       
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('data_barang'), $new_image);
 
         Barang::create([
-            'nama_barang'=>$request->barang,
+            'nama_barang'=>$request->nama_barang,
             'stok'=>$request->stok,
             'harga'=>$request->harga,
-            'kategori_id'=>$request->kategori,
+            'kategori_id'=>$request->kategori_id,
             'deskripsi'=>$request->deskripsi,
             'gambar'=>$new_image,
         ]);
@@ -153,6 +153,8 @@ class BarangController extends Controller
         foreach ($varian as $item) {
             File::delete('data_varian/'.$item->gambar_varian);
         }
+        
+
         File::delete('data_barang/'.$barang->gambar);
        
 

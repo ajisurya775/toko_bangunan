@@ -38,22 +38,33 @@
                             <div class="col-md-4 offset-md-4">
                                 <form action="{{ route('tambah.varian',$barang->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('post')
                                     <div class="form-grub">
                                         <label for="">Nama Varian {{ $barang->nama_barang}}</label>
-                                        <input type="text" name="varian" id="" class="form-control">
+                                        <input type="text" name="nama_varian" id="" class="form-control {{ $errors->has('nama_varian')?'is-invalid':''}}">
+                                        @if ($errors->has('nama_varian'))
+                                            <p class="text-danger">{{ $errors->first('nama_varian')}}</p>
+                                        @endif
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Stok</label>
-                                        <input type="number" name="stok_varian" id="" class="form-control">
+                                        <input type="number" name="stok_varian" id="" class="form-control {{ $errors->has('stok_varian')?'is-invalid':''}}">
+                                        @if ($errors->has('stok_varian'))
+                                            <p class="text-danger">{{ $errors->first('stok_varian')}}</p>
+                                        @endif
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Harga</label>
-                                        <input type="number" name="harga_varian" id="" class="form-control">
+                                        <input type="number" name="harga_varian" id="" class="form-control {{ $errors->has('harga_varian')?'is-invalid':''}}">
+                                        @if ($errors->has('harga_varian'))
+                                            <p class="text-danger">{{ $errors->first('harga_varian')}}</p>
+                                        @endif
                                     </div>
                                     <div class="form-grub">
                                         <label for="">Gambar</label>
-                                        <input type="file" name="gambar_varian" id="" class="form-control">
+                                        <input type="file" name="gambar_varian" id="" class="form-control {{ $errors->has('gambar_varian')?'is-invalid':''}}">
+                                        @if ($errors->has('gambar_varian'))
+                                            <p class="text-danger">{{ $errors->first('gambar_varian')}}</p>
+                                        @endif
                                      </div>
                                         <br>
                                         <button type="Submit" class="btn btn-success">Simpan</button>

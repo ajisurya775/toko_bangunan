@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Varian;
 use App\Models\Barang;
+use App\Http\Requests\Admin\Varian\Store;
 use Illuminate\Http\Request;
 
 class VarianController extends Controller
@@ -36,7 +37,7 @@ class VarianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Store $request, $id)
     {
         //
         $image = $request->file('gambar_varian');
@@ -48,7 +49,7 @@ class VarianController extends Controller
 
         Varian::create([
             'barang_id'=>$barang->id,
-            'nama_varian'=>$request->varian,
+            'nama_varian'=>$request->nama_varian,
             'stok_varian'=>$request->stok_varian,
             'harga_varian'=>$request->harga_varian,
             'gambar_varian'=>$new_image, 
