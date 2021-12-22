@@ -24,6 +24,7 @@
 
 @section('content')
 <div class="col-lg-6">
+    @include('components.alert')
     <div class="card">
         <div class="card-header">
             <strong class="card-title">Desa</strong>
@@ -43,14 +44,22 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($jangkauan as $item)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Melati II</td>
-                  <td>
-                      <a href="" class="btn btn-danger btn sm"><i class="fa fa-trash"></i></a>
-                      <a href="{{ route('edit-jangkauan')}}" class="btn btn-primary btn sm"><i class="fa fa-edit"></i></a>
-                  </td>
-                </tr>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $item->nama_Desa}}</td>
+                    <td>
+                        <form action="{{ route('hapus.jangkauan', $item->id)}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah anda yakin menghapus data ini?')">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                        <a href="{{ route('edit.jangkauan',$item->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                    </td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
         </div>
@@ -87,15 +96,16 @@
         </button>
     </div>
     <div class="modal-body">
-        <form action="">
+        <form action="{{ route('jangkauan')}}" method="POST">
+            @csrf
             <div class="form-grub">
                 <label for="">Desa</label>
-                <input type="text" class="form-control">
+                <input type="text" name="nama_desa" class="form-control" required>
             </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
     </div>
 </div>

@@ -16,6 +16,8 @@ class KategoriController extends Controller
     public function index()
     {
         //
+        $kategori = Kategori::latest()->paginate(5);
+        return view('admin.kategori.index', compact('kategori'));
     }
 
     /**
@@ -37,6 +39,12 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         //
+        Kategori::create([
+            'nama_kategori'=>$request->nama_kategori
+        ]);
+
+        $request->Session()->flash('success',"Data berhasil ditambahkan.!");
+        return redirect()->route('kategori');
     }
 
     /**
@@ -45,9 +53,11 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function show(Kategori $kategori)
+    public function show($id)
     {
         //
+        $kategori = Kategori::find($id);
+        return view('admin.kategori.edit', compact('kategori'));
     }
 
     /**
@@ -56,9 +66,15 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kategori $kategori)
+    public function edit(Request $request, $id)
     {
         //
+        $kategori = Kategori::find($id);
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->save();
+
+        $request->Session()->flash('success', "Data berhasil diubah.!");
+        return redirect()->route('kategori');
     }
 
     /**
@@ -79,8 +95,13 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy(Request $request, $id)
     {
         //
+        $kategori = Kategori::findOrFail($id);
+        $kategori->forceDelete();
+
+        $request->Session()->flash('success',"Data berhasil dihapus");
+        return redirect()->route('kategori');
     }
 }

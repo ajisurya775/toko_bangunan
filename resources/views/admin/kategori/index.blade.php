@@ -24,6 +24,7 @@
 
 @section('content')
 <div class="col-lg-12">
+    @include('components.alert')
     <div class="card">
         <div class="card-header">
             <strong class="card-title">Kategori</strong>
@@ -43,14 +44,23 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($kategori as $item)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Bahan Bangunan</td>
-                  <td>
-                      <a href="" class="btn btn-danger btn sm"><i class="fa fa-trash"></i></a>
-                      <a href="{{ route('edit-kategori')}}" class="btn btn-primary btn sm"><i class="fa fa-edit"></i></a>
-                  </td>
-                </tr>
+                    <td scope="row">{{ $loop->iteration}}</td>
+                    <td>{{ $item->nama_kategori}}</td>
+                    <td>
+                        <form action="{{ route('hapus.kategori', $item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Apakah anda yakin untuk menghapus data?')">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                        <a href="{{ route('edit.kategori',$item->id)}}" class="btn btn-primary btn-sm d-inline">
+                            <i class="fa fa-edit"></i></a>
+                    </td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
         </div>
@@ -75,15 +85,16 @@
         </button>
     </div>
     <div class="modal-body">
-        <form action="">
+        <form action="{{ route('kategori')}}" method="POST">
+            @csrf
             <div class="form-grub">
                 <label for="">Kategori</label>
-                <input type="text" class="form-control">
+                <input type="text" name="nama_kategori" class="form-control" required>
             </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
     </div>
 </div>

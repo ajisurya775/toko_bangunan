@@ -12,4 +12,6 @@ class Kategori extends Model
     use HasFactory, SoftDeletes;
     
     public $table = 'kategori';
+
+    public $guarded =[];
 }

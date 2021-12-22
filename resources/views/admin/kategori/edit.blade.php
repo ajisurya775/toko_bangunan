@@ -27,19 +27,21 @@
             <div class="col-md-12">
                 <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Tambah Varian</strong>
+                            <strong class="card-title">Edit Kategori</strong>
                                 <div class="pull-right">
-                                    <a href="kategori.html" class="btn btn-secondary btn-sm">
+                                    <a href="{{ route('kategori')}}" class="btn btn-secondary btn-sm">
                                         <i class="fa fa-undo">Back</i>
                                     </a>
                                 </div>
                         </div>
                         <div class="card-body">
                             <div class="col-md-4 offset-md-4">
-                                <form action="">
+                                <form action="{{ route('edit.kategori',$kategori->id)}}" method="post">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="form-grub">
                                         <label for="">Kategori</label>
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="nama_kategori" id="" class="form-control" value="{{ $kategori->nama_kategori}}">
                                     </div>
                                         <br>
                                         <button type="Submit" class="btn btn-success">Ubah</button>

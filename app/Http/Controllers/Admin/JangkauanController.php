@@ -16,6 +16,8 @@ class JangkauanController extends Controller
     public function index()
     {
         //
+        $jangkauan = Jangkauan::latest()->paginate(5);
+        return view('admin.jangkauan.index', compact('jangkauan'));
     }
 
     /**
@@ -37,6 +39,12 @@ class JangkauanController extends Controller
     public function store(Request $request)
     {
         //
+        Jangkauan::create([
+            'nama_desa'=>$request->nama_desa
+        ]);
+
+        $request->Session()->flash('success',"Data berhasil ditambahkan.!");
+        return redirect()->route('jangkauan');
     }
 
     /**
@@ -45,9 +53,11 @@ class JangkauanController extends Controller
      * @param  \App\Models\Jangkauan  $jangkauan
      * @return \Illuminate\Http\Response
      */
-    public function show(Jangkauan $jangkauan)
+    public function show(Request $request, $id)
     {
         //
+        $jangkauan = Jangkauan::find($id);
+        return view('admin.jangkauan.edit', compact('jangkauan'));
     }
 
     /**
@@ -56,9 +66,15 @@ class JangkauanController extends Controller
      * @param  \App\Models\Jangkauan  $jangkauan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jangkauan $jangkauan)
+    public function edit(Request $request, $id)
     {
         //
+        $jangkauan = Jangkauan::find($id);
+        $jangkauan->nama_desa = $request->nama_desa;
+        $jangkauan->save();
+
+        $request->Session()->flash('success',"Data berhasil diubah.!");
+        return redirect()->route('jangkauan');
     }
 
     /**
@@ -79,8 +95,13 @@ class JangkauanController extends Controller
      * @param  \App\Models\Jangkauan  $jangkauan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jangkauan $jangkauan)
+    public function destroy(Request $request, $id)
     {
         //
+        $jangkauan = Jangkauan::findOrFail($id);
+        $jangkauan->forceDelete();
+
+        $request->Session()->flash('success',"Data berhasil di hapus.!");
+        return redirect()->route('jangkauan');
     }
 }

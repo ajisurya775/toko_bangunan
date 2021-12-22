@@ -22,10 +22,10 @@
                     <a href="{{ route('data.barang')}}"> <i class="menu-icon fa fa-server" aria-hidden="true"></i>Data Barang </a>
                 </li>
                 <li>
-                  <a href="#"> <i class="menu-icon fa fa-share-alt" aria-hidden="true"></i>Kategori </a>
+                  <a href="{{ route('kategori')}}"> <i class="menu-icon fa fa-share-alt" aria-hidden="true"></i>Kategori </a>
               </li>
               <li>
-                <a href="#"> <i class="menu-icon fa fa-map-marker" aria-hidden="true"></i>Jangkauan </a>
+                <a href="{{ route('jangkauan')}}"> <i class="menu-icon fa fa-map-marker" aria-hidden="true"></i>Jangkauan </a>
             </li>
                 <li>
                     <a href="#"> <i class="menu-icon fa fa-address-book" aria-hidden="true"></i></i>Laporan Penjualan </a>

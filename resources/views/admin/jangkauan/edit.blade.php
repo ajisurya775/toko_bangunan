@@ -36,10 +36,12 @@
                         </div>
                         <div class="card-body">
                             <div class="col-md-4 offset-md-4">
-                                <form action="">
+                                <form action="{{ route('edit.jangkauan', $jangkauan->id)}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="form-grub">
                                         <label for="">Nama Desa</label>
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="nama_desa" id="" class="form-control" value="{{ $jangkauan->nama_Desa}}">
                                     </div>
                                         <br>
                                         <button type="Submit" class="btn btn-success">Ubah</button>
