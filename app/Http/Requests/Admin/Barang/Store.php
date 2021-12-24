@@ -25,12 +25,12 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'nama_barang'=>'required|string',
+            'nama_barang'=>'required|string|unique:barang,nama_barang',
             'stok'=>'required',
             'harga'=>'required',
             'kategori_id'=>'required',
             'deskripsi'=>'required',
-            'gambar'=>'required|mimes:jpg,bmp,png|size:max:2048'
+            'gambar'=>'required|mimes:jpg,bmp,png'
         ];
     }
 }

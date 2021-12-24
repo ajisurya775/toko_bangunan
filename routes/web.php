@@ -5,6 +5,12 @@ use App\Http\Controllers\Admin\BarangController;
 use App\Http\Controllers\Admin\VarianController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\JangkauanController;
+use App\Http\Controllers\Admin\HomeController as AdminDashboard;
+use App\Http\Controllers\User\HomeController as UserDashboard;
+use App\Http\Controllers\User\ProdukController;
+use App\Http\Controllers\User\HistoryController;
+use App\Http\Controllers\User\KeranjangController;
+use App\Http\Controllers\User\KontakController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +23,18 @@ use App\Http\Controllers\Admin\JangkauanController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-})->middleware(['auth'])->name('/');
+// Route::get('/', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth'])->name('/');
+Route::get('/', [UserDashboard::class, 'index'])->name('/');
+Route::get('produk', [ProdukController::class, 'index'])->name('produk');
+Route::get('history', [HistoryController::class, 'index'])->name('history');
+Route::get('keranjang', [KeranjangController::class, 'index'])->name('keranjang');
+Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
+
+
+//routing admin
+Route::get('dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
 
 //data-barang
 Route::get('data-barang', [BarangController::class, 'index'])->name('data.barang');

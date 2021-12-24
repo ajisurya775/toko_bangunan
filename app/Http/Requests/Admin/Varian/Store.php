@@ -25,7 +25,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'nama_varian'=>'required',
+            'nama_varian'=>'required|unique:varian,nama_varian',
             'stok_varian'=>'required',
             'harga_varian'=>'required',
             'gambar_varian'=>'required'

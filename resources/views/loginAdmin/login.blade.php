@@ -34,7 +34,7 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
-                    <a href="index.html">
+                    <a href="{{ route('login.admin')}}">
                         <h3 class="text-white"><i class="fa fa-user text-white"></i> App UD.Rizki</h3>
                     </a>
                 </div>
