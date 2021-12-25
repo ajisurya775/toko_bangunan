@@ -55,7 +55,7 @@
                     <td>Rp 3000.000</td>
                     <td><span class="badge bg-warning">Menunggu</span></td>
                     <td class="text-center">
-                    <a href="{{ route('detail-pesanan')}}" class="btn btn-warning btn-sm">
+                    <a href="#" class="btn btn-warning btn-sm">
                     <i class="fa fa-eye"></i></a>
                     <a href="" class="btn btn-info btn-sm">
                         <i class="fa fa-print"></i></a>
@@ -64,9 +64,6 @@
                         </a>
                         <a href="" class="btn btn-info btn-sm">
                             <i class="fa fa-spinner" aria-hidden="true"></i>
-                        </a>
-                        <a href="" class="btn btn-success btn-sm">
-                            <i class="fa fa-truck" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>

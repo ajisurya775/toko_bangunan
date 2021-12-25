@@ -1,6 +1,6 @@
 @extends('layoutUser.app2')
 
-@section('content')
+@section('breadcrumbs')
 <!-- Breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
@@ -16,8 +16,10 @@
         </div>
     </div>
 </div>
-<!-- End Breadcrumbs -->
+<!-- End Breadcrumbs -->    
+@endsection
 
+@section('content')
 <!-- Product Style -->
 <section class="product-area shop-sidebar shop section">
     <div class="container">

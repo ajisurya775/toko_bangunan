@@ -16,8 +16,7 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <li><i class="ti-user"></i> <a href="#">Sign In</a></li>
-                            <li><i class="ti-power-off"></i><a href="login.html#">Sign Up</a></li>
+                            <li><i class="fa fa-sign-in" aria-hidden="true"></i> <a href="#">Sign In</a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -70,7 +69,7 @@
                     <div class="right-bar">
                         <!-- Search Form -->
                         <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                            <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i><small> Aji surya</small></a>
                         </div>
                         <div class="sinlge-bar shopping">
                             <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>

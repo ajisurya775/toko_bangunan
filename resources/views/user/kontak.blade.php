@@ -1,23 +1,25 @@
 @extends('layoutUser.app2')
 
-@section('content')
-	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="bread-inner">
-						<ul class="bread-list">
-							<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">Contact</a></li>
-						</ul>
-					</div>
+@section('breadcrumbs')
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="bread-inner">
+					<ul class="bread-list">
+						<li><a href="index1.html">Beranda<i class="ti-arrow-right"></i></a></li>
+						<li class="active"><a href="blog-single.html">Kontak Kami</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Breadcrumbs -->
-  
+</div>
+<!-- End Breadcrumbs -->
+@endsection
+
+@section('content')
 	<!-- Start Contact -->
 	<section id="contact-us" class="contact-us section">
 		<div class="container">
@@ -74,7 +76,7 @@
 							<div class="single-head">
 								<div class="single-info">
 									<i class="fa fa-phone"></i>
-									<h4 class="title">Call us Now:</h4>
+									<h4 class="title">Hubungi Kami:</h4>
 									<ul>
 										<li>+123 456-789-1120</li>
 										<li>+522 672-452-1120</li>
@@ -90,9 +92,9 @@
 								</div>
 								<div class="single-info">
 									<i class="fa fa-location-arrow"></i>
-									<h4 class="title">Our Address:</h4>
+									<h4 class="title">Alamat Kami:</h4>
 									<ul>
-										<li>KA-62/1, Travel Agency, 45 Grand Central Terminal, New York.</li>
+										<li>Desa melati II kecamatan perbaungan dusun sei tontong.</li>
 									</ul>
 								</div>
 							</div>

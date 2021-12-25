@@ -16,7 +16,7 @@
                 </li>
                 <h3 class="menu-title">Menu</h3><!-- /.menu-title -->
                 <li>
-                    <a href="#"> <i class="menu-icon fa fa-paper-plane" aria-hidden="true"></i>Pesanan Masuk </a>
+                    <a href="{{ route('pesanan')}}"> <i class="menu-icon fa fa-paper-plane" aria-hidden="true"></i>Pesanan Masuk </a>
                 </li>
                 <li class="">
                     <a href="{{ route('data.barang')}}"> <i class="menu-icon fa fa-server" aria-hidden="true"></i>Data Barang </a>

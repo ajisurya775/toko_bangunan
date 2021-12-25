@@ -58,6 +58,8 @@
 	</div>
 	<!-- End Preloader -->
 	@include('componentUser.navbar-2')
+
+	@yield('breadcrumbs')
 	
 		<!--/ End Header -->
 	

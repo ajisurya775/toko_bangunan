@@ -1,6 +1,6 @@
 @extends('layoutUser.app2')
 
-@section('content')
+@section('breadcrumbs')
 <!-- Breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
@@ -8,8 +8,8 @@
             <div class="col-12">
                 <div class="bread-inner">
                     <ul class="bread-list">
-                        <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="blog-single.html">Cart</a></li>
+                        <li><a href="index1.html">Beranda<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="blog-single.html">Keranjang</a></li>
                     </ul>
                 </div>
             </div>
@@ -17,7 +17,9 @@
     </div>
 </div>
 <!-- End Breadcrumbs -->
-        
+@endsection
+
+@section('content')        
 <!-- Shopping Cart -->
 <div class="shopping-cart section">
     <div class="container">
@@ -97,7 +99,7 @@
                                     <li>Subtotal<span>$330.00</span></li>
                                 </ul>
                                 <div class="button5">
-                                    <a href="checkout.html" class="btn">Checkout</a>
+                                    <a href="{{ route('checkout')}}" class="btn">Checkout</a>
                                     <a href="shop-grid.html" class="btn">Continue shopping</a>
                                 </div>
                             </div>

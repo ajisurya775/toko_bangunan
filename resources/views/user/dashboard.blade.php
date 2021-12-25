@@ -35,7 +35,7 @@
             <!-- Single Banner  -->
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="single-banner" id="small_image">
-                    <img src="images/kelistrikan.jpg" alt="#">
+                    <img src="{{ asset('template_user/eshop/images/kelistrikan.jpg')}}" alt="#">
                     <div class="content">
                         <p></p>
                         <h3>Kelistrikan</h3>
@@ -47,7 +47,7 @@
             <!-- Single Banner  -->
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="single-banner" id="small_image">
-                    <img src="images/bahan_bangunan.jpg" alt="#">
+                    <img src="{{ asset('template_user/eshop/images/bahan_bangunan.jpg')}}" alt="#">
                     <div class="content">
                         <p></p>
                         <h3>Bahan Bangunan</h3>
@@ -59,7 +59,7 @@
             <!-- Single Banner  -->
             <div class="col-lg-4 col-12">
                 <div class="single-banner tab-height">
-                    <img src="images/alat_bangunan3.jpg" alt="#" id="small_image">
+                    <img src="{{ asset('template_user/eshop/images/alat_bangunan3.jpg')}}" alt="#" id="small_image">
                     <div class="content">
                         <p></p>
                         <h3 class="text-bold">Alat Bangunan</h3>

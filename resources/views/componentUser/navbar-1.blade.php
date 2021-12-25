@@ -14,10 +14,9 @@
                 </div>
                 <div class="col-lg-8 col-md-12 col-12">
                     <!-- Top Right -->
-                    <div class="right-content d-none d-sm-block">
+                    <div class="right-content">
                         <ul class="list-main">
                             <li><i class="fa fa-sign-in" aria-hidden="true"></i> <a href="#">Sign In</a></li>
-                            <li><i class="fa fa-sign-out" aria-hidden="true"></i><a href="login.html#">Sign Up</a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -136,10 +135,9 @@
                                         <ul class="nav main-menu menu navbar-nav">
                                             <li class="{{ route('/')}}"><a href="index.html">Beranda</a></li>	
                                             <li><a href="{{ route('produk')}}">Produk</a></li>												
-                                            <li><a href="cart.html">Keranjang</a><span class="new">New</span></li>
-                                            <li><a href="history.html">Histori Belanja</a></li>
-                                            <li><a href="contact.html">Kontak Kami</a></li>
-                                            <li><a class="d-block d-sm-none" href="contact.html"><i class="fa fa-sign-in"></i> Login</a></li>
+                                            <li><a href="{{ route('keranjang')}}">Keranjang</a><span class="new">New</span></li>
+                                            <li><a href="{{ route('history')}}">Histori Belanja</a></li>
+                                            <li><a href="{{ route('kontak')}}">Kontak Kami</a></li>
                                             </ul>
                                     </div>
                                 </div>

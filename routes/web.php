@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Admin\BarangController;
 use App\Http\Controllers\Admin\VarianController;
 use App\Http\Controllers\Admin\KategoriController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\User\ProdukController;
 use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\User\KeranjangController;
 use App\Http\Controllers\User\KontakController;
+use App\Http\Controllers\User\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +33,14 @@ Route::get('produk', [ProdukController::class, 'index'])->name('produk');
 Route::get('history', [HistoryController::class, 'index'])->name('history');
 Route::get('keranjang', [KeranjangController::class, 'index'])->name('keranjang');
 Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
+Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 
 //routing admin
 Route::get('dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+
+//routing pesanan masuk
+Route::get('pesanan', [PesananController::class, 'index'])->name('pesanan');
 
 //data-barang
 Route::get('data-barang', [BarangController::class, 'index'])->name('data.barang');
