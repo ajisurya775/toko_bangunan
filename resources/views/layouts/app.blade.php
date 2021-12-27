@@ -41,7 +41,7 @@
 
         @yield('content')
         
-
+        
         
             
     <!-- Right Panel -->

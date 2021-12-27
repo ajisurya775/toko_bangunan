@@ -13,6 +13,7 @@ use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\User\KeranjangController;
 use App\Http\Controllers\User\KontakController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,10 @@ Route::post('jangkauan', [JangkauanController::class, 'store'])->name('jangkauan
 Route::get('edit-jangkauan/{id}', [JangkauanController::class, 'show'])->name('edit.jangkauan');
 Route::put('edit-jangkauan/{id}', [JangkauanController::class, 'edit'])->name('edit.jangkauan');
 Route::delete('hapus-jangkauan/{id}', [JangkauanController::class, 'destroy'])->name('hapus.jangkauan');
+
+//socialite routes
+Route::get('login-dengan-google', [UserController::class, 'google'])->name('user.login.google');
+Route::get('auth/google/callback', [UserController::class, 'handleProviderCallback'])->name('user.google.callback');
 
 
 require __DIR__.'/auth.php';

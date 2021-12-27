@@ -14,11 +14,27 @@
                 </div>
                 <div class="col-lg-8 col-md-12 col-12">
                     <!-- Top Right -->
+                    @auth
                     <div class="right-content">
-                        <ul class="list-main">
-                            <li><i class="fa fa-sign-in" aria-hidden="true"></i> <a href="#">Sign In</a></li>
+                        <ul class="list-main d-none d-md-block">
+                            <li>
+                                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                                    <form id="logout-form" action="{{ route('logout.user')}}" method="POST">
+                                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                                    </form>
+                            </li>
+                        </ul>
+                        <ul class="list-main d-block d-md-none">
+                            <li><p>Hi!, {{ Auth::User()->name}}</p></li>
                         </ul>
                     </div>
+                    @else
+                    <div class="right-content">
+                        <ul class="list-main">
+                            <li><a href="{{ route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a></li>
+                        </ul>
+                    </div>
+                    @endauth
                     <!-- End Top Right -->
                 </div>
             </div>
@@ -68,8 +84,9 @@
                 <div class="col-lg-2 col-md-3 col-12">
                     <div class="right-bar">
                         <!-- Search Form -->
+                        @auth
                         <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i><small> Aji surya</small></a>
+                            <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i><small>Hi!, {{ Auth::user()->name}}</small></a>
                         </div>
                         <div class="sinlge-bar shopping">
                             <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
@@ -103,6 +120,7 @@
                             </div>
                             <!--/ End Shopping Item -->
                         </div>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -125,6 +143,7 @@
                                             <li><a href="{{ route('keranjang')}}">Keranjang<span class="new">New</span></a></li>
                                             <li><a href="{{ route('history')}}">Histori Belanja</a></li>									
                                             <li><a href="{{ route('kontak')}}">Kontak Kami</a></li>
+                                            <li><a href="" class="d-block d-md-none">Logout</a></li>
                                         </ul>
                                     </div>
                                 </div>
