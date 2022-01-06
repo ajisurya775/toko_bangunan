@@ -7,6 +7,7 @@ use App\Models\Varian;
 use App\Models\Barang;
 use App\Http\Requests\Admin\Varian\Store;
 use Illuminate\Http\Request;
+use File;
 
 class VarianController extends Controller
 {
@@ -78,9 +79,12 @@ class VarianController extends Controller
      * @param  \App\Models\Varian  $varian
      * @return \Illuminate\Http\Response
      */
-    public function edit(Varian $varian)
+    public function edit($id)
     {
         //
+        $varian = Varian::find($id);
+
+        return view('admin.dataBarang.editVarian', compact('varian'));
     }
 
     /**
@@ -90,9 +94,39 @@ class VarianController extends Controller
      * @param  \App\Models\Varian  $varian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Varian $varian)
+    public function update(Request $request, $id)
     {
         //
+       if ($request->gambar_varian <> "") {
+        $image = $request->file('gambar_varian');
+        $new_image = rand().''.$image->getClientOriginalExtension();
+        $image->move(public_path('data_varian'), $new_image);
+
+        $gambar = Varian::find($id);
+        File::delete('data_varian/'.$gambar->gambar_varian);
+
+        $varian = Varian::find($id);
+        $varian->nama_varian = $request->nama_varian;
+        $varian->stok_varian = $request->stok_varian;
+        $varian->harga_varian = $request->harga_varian;
+        $varian->gambar_varian = $new_image;
+        $varian->save();
+
+        $request->Session()->flash('success', 'Data varian berhasil diubah.!');
+        return redirect()->route('detail.varian',$varian->barang_id);
+
+       } else {
+        $varian = Varian::find($id);
+        $varian->nama_varian = $request->nama_varian;
+        $varian->stok_varian = $request->stok_varian;
+        $varian->harga_varian = $request->harga_varian;
+        $varian->save();
+
+        $request->Session()->flash('success', 'Data varian berhasil diubah.!');
+        return redirect()->route('detail.varian',$varian->barang_id);
+       }
+       
+
     }
 
     /**
@@ -101,8 +135,15 @@ class VarianController extends Controller
      * @param  \App\Models\Varian  $varian
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Varian $varian)
+    public function destroy(Request $request, $id)
     {
         //
+        $varian = Varian::findOrFail($id);
+        $varian->forceDelete();
+
+        File::delete('data_varian/'.$varian->gambar_varian);
+
+        $request->Session()->flash('success', "Varian berhasil dihapus.!");
+        return redirect()->route('detail.varian',$varian->barang_id);
     }
 }

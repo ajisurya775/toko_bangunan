@@ -20,7 +20,7 @@ class Varian extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Barang(): BelongsTo
+    public function barang(): BelongsTo
     {
         return $this->belongsTo(Barang::class);
     }

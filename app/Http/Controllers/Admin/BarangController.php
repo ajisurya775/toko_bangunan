@@ -19,7 +19,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::latest()->paginate(5);
+        $barang = Barang::latest()->get();
         return view('admin.dataBarang.index', [
             'barang'=>$barang
         ]);

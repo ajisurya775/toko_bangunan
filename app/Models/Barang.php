@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Barang extends Model
 {
@@ -19,10 +20,15 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
-    public function Varian(): BelongsTo
-    {
-        return $this->belongsTo(Varian::class);
-    }
+   /**
+    * Get all of the varian for the varian
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function varian(): HasMany
+   {
+       return $this->hasMany(Varian::class);
+   }
 
 
 }

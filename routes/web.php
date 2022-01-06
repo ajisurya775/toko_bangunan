@@ -35,6 +35,10 @@ Route::get('history', [HistoryController::class, 'index'])->name('history');
 Route::get('keranjang', [KeranjangController::class, 'index'])->name('keranjang');
 Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('detail/{id}', [UserDashboard::class, 'detail'])->name('detail');
+Route::get('varian-barang/{id}', [UserDashboard::class, 'varian'])->name('varian');
+Route::post('barang-aksi/{id}', [UserDashboard::class, 'create'])->name('barang.aksi');
+Route::post('varian-aksi/{id}', [UserDashboard::class, 'vcreate'])->name('varian.aksi');
 
 
 //routing admin
@@ -56,6 +60,9 @@ Route::delete('hapus-barang/{id}', [BarangController::class, 'destroy'])->name('
 Route::get('tambah-varian/{id}', [VarianController::class, 'create'])->name('tambah.varian');
 Route::post('tambah-varian/{id}', [VarianController::class, 'store'])->name('tambah.varian');
 Route::get('detail-varian/{id}', [VarianController::class, 'show'])->name('detail.varian');
+Route::get('edit-varian/{id}', [VarianController::class, 'edit'])->name('edit.varian');
+Route::put('edit-varian/{id}', [VarianController::class, 'update'])->name('edit.varian');
+Route::delete('hapus-varian/{id}', [VarianController::class, 'destroy'])->name('hapus.varian');
 
 //kategori-barang
 Route::get('kategori', [KategoriController::class, 'index'])->name('kategori');

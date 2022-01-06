@@ -120,6 +120,8 @@
                             </div>
                             <!--/ End Shopping Item -->
                         </div>
+                        @else
+                        <P>Selamat datang di toko Ud.rizki</P>
                         @endauth
                     </div>
                 </div>
@@ -140,10 +142,19 @@
                                         <ul class="nav main-menu menu navbar-nav">
                                             <li><a href="{{ route('/')}}">Beranda</a></li>
                                             <li><a href="{{ route('produk')}}">Produk</a></li>												
-                                            <li><a href="{{ route('keranjang')}}">Keranjang<span class="new">New</span></a></li>
-                                            <li><a href="{{ route('history')}}">Histori Belanja</a></li>									
+                                            @auth
+                                            <li><a href="{{ route('keranjang')}}">Keranjang</a><span class="new">New</span></li>
+                                            <li><a href="{{ route('history')}}">Histori Belanja</a></li>
+                                            @endauth									
                                             <li><a href="{{ route('kontak')}}">Kontak Kami</a></li>
-                                            <li><a href="" class="d-block d-md-none">Logout</a></li>
+                                            @auth
+                                            <li>
+                                                <a class="nav-link d-block d-md-none" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>
+                                                <form id="logout-form" action="{{ route('logout.user')}}" method="POST">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                                                </form>
+                                            </li>
+                                            @endauth
                                         </ul>
                                     </div>
                                 </div>
