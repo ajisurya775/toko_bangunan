@@ -23,6 +23,7 @@
 <!-- Start Blog Single -->
 <section class="blog-single section">
     <div class="container">
+        @include('components.alert')
         <div class="row">
             <div class="col-lg-4 col-12 offset-md-2">
                 <div class="blog-single-main">
@@ -52,14 +53,14 @@
                         <form action="{{ route('varian.aksi',$varian->id)}}" method="post" >
                             @csrf
                             <div class="form-grub">
-                                <label for=""> Harga : {{ $varian->harga_varian}}</label>
+                                <label for=""> Harga : Rp {{number_format($varian->harga_varian) }}</label>
                             </div>
                             <div class="form-grub">
                                 <label for=""> Stok : {{ $varian->stok_varian}}</label>
                             </div>
                             <div class="form-grub"><br>
                                 <label for=""> Qty</label>
-                                <input type="number" min="1" class="form-control" name="qty">
+                                <input type="number" min="1" class="form-control" name="qty" value="{{ old('qty')}}">
                             </div><br>
                             <button class="btn btn-secondary" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Tambah Keranjang</button>
                         </form>

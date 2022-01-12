@@ -129,7 +129,7 @@
                                                 <div class="product-content">
                                                     <h3><a href="{{ route('detail',$item->id)}}">{{ $item->nama_barang}}</a></h3>
                                                     <div class="product-price">
-                                                        <span>Rp {{ $item->harga}}</span>
+                                                        <span>Rp {{ number_format($item->harga, 0,',','.')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,7 +178,7 @@
                                                 <div class="product-content">
                                                     <h3><a href="{{ route('detail',$item->id)}}">{{ $item->nama_barang}}</a></h3>
                                                     <div class="product-price">
-                                                        <span>Rp {{ $item->harga}}</span>
+                                                        <span>Rp {{ number_format($item->harga, 0,',','.')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,7 +226,7 @@
                                                 <div class="product-content">
                                                     <h3><a href="#">{{ $item->nama_barang}}</a></h3>
                                                     <div class="product-price">
-                                                        <span>Rp {{ $item->harga}}</span>
+                                                        <span>Rp {{ number_format($item->harga, 0,',','.')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -287,7 +287,7 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="{ route('detail',$item->id)}}">{{ $item->nama_barang}}</a></h3>
+                            <h3><a href="{{ route('detail',$item->id)}}">{{ $item->nama_barang}}</a></h3>
                             <div class="product-price">
                                 <span>Rp {{ $item->harga}}</span>
                             </div>

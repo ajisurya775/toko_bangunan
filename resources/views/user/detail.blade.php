@@ -23,6 +23,7 @@
 <!-- Start Blog Single -->
 <section class="blog-single section">
     <div class="container">
+        @include('components.alert')
         <div class="row">
             <div class="col-lg-4 col-12 offset-md-2">
                 <div class="blog-single-main">
@@ -52,7 +53,7 @@
                         <form action="{{ route('barang.aksi',$barang->id)}}" method="post" >
                             @csrf
                             <div class="form-grub">
-                                <label for=""> Harga : {{ $barang->harga}}</label>
+                                <label for=""> Harga : Rp {{ number_format($barang->harga, 0,',','.')}}</label>
                             </div>
                             <div class="form-grub">
                                 <label for=""> Stok : {{ $barang->stok}}</label>
@@ -66,7 +67,7 @@
                             </div>
                             <div class="form-grub"><br>
                                 <label for=""> Qty</label>
-                                <input type="number" min="1" class="form-control" name="qty" >
+                                <input type="number" min="1" class="form-control" name="qty" value="{{ old('qty')}}" required>
                             </div><br>
                             <button class="btn btn-secondary" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Tambah Keranjang</button>
                         </form>

@@ -25,68 +25,53 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                @include('components.alert')
                 <!-- Shopping Summery -->
                 <table class="table shopping-summery">
                     <thead>
                         <tr class="main-hading">
-                            <th>PRODUCT</th>
-                            <th>NAME</th>
-                            <th class="text-center">UNIT PRICE</th>
+                            <th>GAMBAR</th>
+                            <th>NAMA PRODUK</th>
+                            <th class="text-center">HARGA SATUAN</th>
                             <th class="text-center">QUANTITY</th>
                             <th class="text-center">TOTAL</th> 
                             <th class="text-center"><i class="ti-trash remove-icon"></i></th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $subtotal = 0;
+                        @endphp
+                        @forelse ($keranjang as $item)
+                        @php
+                            $subtotal = $subtotal + $item->total;
+                        @endphp
                         <tr>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                            <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">Women Dress</a></p>
+                            <td class="image" data-title="Gambar"><img src="{{ (is_null($item->varian_id))? url('data_barang',$item->barang->gambar): url('data_varian',$item->varian->gambar_varian) }}" style="height: 100px;width: 100px;" alt="#"></td>
+                            <td class="product-des" data-title="Nama Barang">
+                                <p class="product-name"><a href="#">{{  (is_null($item->varian_id)) ? $item->barang->nama_barang : $item->varian->nama_varian }}</a></p>
                             </td>
-                            <td class="price" data-title="Price"><span>$110.00 </span></td>
+                            <td class="price" data-title="Harga Satuan"><span>Rp {{ number_format($item->barang->harga, 0,',','.')}} </span></td>
                             <td class="qty" data-title="Qty"><!-- Input Order -->
-                                    <input type="text" readonly name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
+                                    <input type="text" readonly name="quant[1]" class="input-number"  data-min="1" data-max="100" value="{{ $item->qty}}">
                                 <!--/ End Input Order -->
                             </td>
-                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                            <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+                            <td class="total-amount" data-title="Total"><span>Rp {{ number_format($item->total, 0,',','.')}}</span></td>
+                            <td class="action" data-title="Remove"><a href="{{ route('keranjang.hapus',$item->id)}}"><i class="ti-trash remove-icon"></i></a></td>
                         </tr>
-                        <tr>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                            <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">Women Dress</a></p>
-                            </td>
-                            <td class="price" data-title="Price"><span>$110.00 </span></td>
-                            <td class="qty" data-title="Qty"><!-- Input Order -->
-                                
-                                    <input type="text" readonly name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
-                                
-                                <!--/ End Input Order -->
-                            </td>
-                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                            <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                            <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">Women Dress</a></p>
-                            </td>
-                            <td class="price" data-title="Price"><span>$110.00 </span></td>
-                            <td class="qty" data-title="Qty"><!-- Input Order -->
-                            
-                                    <input type="text" readonly name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
+                        @empty
+                            <tr>
+                                <td></td>
+                                <td><h3 class="text-center">Belum ada data belanjaan anda</h3></td>
+                            </tr>
+                        @endforelse
                         
-                                <!--/ End Input Order -->
-                            </td>
-                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                            <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-                        </tr>
                     </tbody>
                 </table>
                 <!--/ End Shopping Summery -->
             </div>
         </div>
-        <div class="row">
+        <div class="row"><br><br><br>
             <div class="col-12">
                 <!-- Total Amount -->
                 <div class="total-amount">
@@ -96,11 +81,11 @@
                         <div class="col-lg-4 col-md-7 col-12">
                             <div class="right">
                                 <ul>
-                                    <li>Subtotal<span>$330.00</span></li>
+                                    <li>Subtotal<span>Rp {{ number_format($subtotal, 0,',','.') }}</span></li>
                                 </ul>
                                 <div class="button5">
                                     <a href="{{ route('checkout')}}" class="btn">Checkout</a>
-                                    <a href="shop-grid.html" class="btn">Continue shopping</a>
+                                    <a href="{{ route('produk')}}" class="btn">Continue shopping</a>
                                 </div>
                             </div>
                         </div>

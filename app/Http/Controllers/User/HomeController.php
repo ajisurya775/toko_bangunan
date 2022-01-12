@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Varian;
 use App\Models\Keranjang;
-use Illuminate\Support\Collection;
 use Auth;
 
 class HomeController extends Controller
@@ -18,7 +17,7 @@ class HomeController extends Controller
         $bahan =  Barang::where('kategori_id','2')->simplePaginate(12);
         $listrik =  Barang::where('kategori_id','1')->simplePaginate(12);
         $alat =  Barang::where('kategori_id','3')->simplePaginate(12);
-        $random =  Barang::all();
+        $random =  Barang::inRandomOrder('kategori_id')->get();
 
         // $bahan = $bahans->pluck('id')->join(',');
         // $listrik = $listriks->pluck('id')->join(',');
@@ -46,34 +45,101 @@ class HomeController extends Controller
     }
     public function create(Request $request,$id)
     {
-        $barang = Barang::find($id);
+        $barang = Barang::where('id', $id)->first();
 
-        $harga = $barang['harga'];
-        $qty = $request->qty;
+        //validasi untuk stok barang
+        if ($request->qty > $barang->stok) {
 
-        $subtot = $harga * $qty;
+            $request->Session()->flash('error',"Maaf jumlah stok barang kurang dari {$request->qty}");
+            return redirect()->route('detail',$id);
+        }
 
-        Keranjang::create([
-            'barang_id' =>$id,
-            'user_id' =>Auth::id(),
-            'qty'=>$qty,
-            'total'=>$subtot,
-        ]);
+        //validasi untuk barang sama di keranjang
+        $cek_keranjang = Keranjang::where('barang_id', $id)->where('user_id', Auth::id())->first();
+        if (empty($cek_keranjang)) {
+
+            $harga = $barang['harga'];
+            $qty = $request->qty;
+
+            $subtot = $harga * $qty;
+
+            Keranjang::create([
+                'barang_id' =>$id,
+                'user_id' =>Auth::id(),
+                'qty'=>$qty,
+                'total'=>$subtot,
+            ]);
+        }
+         else
+        {
+            $keranjang = Keranjang::where('barang_id', $id)->where('user_id', Auth::id())->first();
+            $barang = Barang::where('id', $id)->first();
+
+            //calculate total harga
+            $harga = $request->qty * $barang->harga;
+            $total_harga = $harga + $keranjang['total'];
+
+            //calculate qty barang
+            $jumlah = $request->qty + $keranjang['qty'];
+
+            //query update keranjang
+            $keranjang->qty = $jumlah;
+            $keranjang->total = $total_harga;
+            $keranjang->save();
+        }
+
+        $request->Session()->flash('success',"Barang berhasil di tambahkan.!");
+
+        return redirect()->route('keranjang');
     }
     public function vcreate(Request $request,$id)
     {
         $barang = Varian::find($id);
+        
+        //validasi untuk stok varian
+        if ($request->qty > $barang->stok_varian) {
+            $request->Session()->flash('error',"Maaf jumlah stok barang kurang dari {$request->qty}");
+            return redirect()->route('varian',$id);
+        }
 
-        $harga = $barang['harga_varian'];
-        $qty = $request->qty;
+        //validasi untuk keranjang di varian barang
+        $cek_keranjang = Keranjang::where('varian_id', $id)->where('user_id', Auth::id())->first();
+        if (empty($cek_keranjang)) {
 
-        $subtot = $harga * $qty;
-    
-        Keranjang::create([
-            'varian_id' =>$id,
-            'user_id' =>Auth::id(),
-            'qty'=>$qty,
-            'total'=>$subtot,
-        ]);
+            $harga = $barang['harga_varian'];
+            $qty = $request->qty;
+
+            $subtot = $harga * $qty;
+        
+            Keranjang::create([
+                'barang_id' =>$barang['barang_id'],
+                'varian_id' =>$id,
+                'user_id' =>Auth::id(),
+                'qty'=>$qty,
+                'total'=>$subtot,
+            ]);
+        }
+         else
+        {
+            $keranjang = Keranjang::where('varian_id', $id)->where('user_id', Auth::id())->first();
+            $varian = Varian::where('id', $id)->first();
+            
+            //jumlah qty barang
+            $jumlah = $request->qty + $keranjang['qty'];
+
+            //jumlah total barang
+            $harga = $request->qty * $varian['harga_varian'];
+            $total_harga = $harga + $keranjang['total'];
+
+            //query update
+            $keranjang->qty = $jumlah;
+            $keranjang->total = $total_harga;
+            $keranjang->save();
+        }
+        
+        $request->Session()->flash('success','Barang berhasil di tambahkan.!');
+
+        return redirect()->route('keranjang');
+
     }
 }

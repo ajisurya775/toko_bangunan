@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Keranjang;
+use Auth;
 
 class KeranjangController extends Controller
 {
@@ -14,8 +16,8 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        //
-        return view('user.keranjang');
+        $keranjang = Keranjang::where('user_id',Auth::id())->get();
+        return view('user.keranjang', compact('keranjang'));
     }
 
     /**
@@ -79,8 +81,12 @@ class KeranjangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        $keranjang = Keranjang::findOrFail($id);
+        $keranjang->forceDelete();
+
+        $request->Session()->flash('success','Barang berhasil di hapus dari keranjang.!');
+        return redirect()->route('keranjang');
     }
 }

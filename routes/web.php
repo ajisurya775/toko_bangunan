@@ -39,6 +39,7 @@ Route::get('detail/{id}', [UserDashboard::class, 'detail'])->name('detail');
 Route::get('varian-barang/{id}', [UserDashboard::class, 'varian'])->name('varian');
 Route::post('barang-aksi/{id}', [UserDashboard::class, 'create'])->name('barang.aksi');
 Route::post('varian-aksi/{id}', [UserDashboard::class, 'vcreate'])->name('varian.aksi');
+route::get('keranjang-hapus/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.hapus');
 
 
 //routing admin

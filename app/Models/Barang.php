@@ -30,5 +30,14 @@ class Barang extends Model
        return $this->hasMany(Varian::class);
    }
 
+   /**
+    * Get all of the keranjang for the Barang
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function keranjang(): HasMany
+   {
+       return $this->hasMany(keranjang::class);
+   }
 
 }
