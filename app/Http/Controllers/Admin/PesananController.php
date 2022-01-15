@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Checkout;
 
 class PesananController extends Controller
 {
@@ -14,8 +15,8 @@ class PesananController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.pesananMasuk.index');
+        $checkout = Checkout::where('status', 1)->get();
+        return view('admin.pesananMasuk.index', compact('checkout'));
     }
 
     /**
@@ -26,6 +27,7 @@ class PesananController extends Controller
     public function create()
     {
         //
+        return view('admin.pesananMasuk.detail');
     }
 
     /**

@@ -18,6 +18,8 @@ class CreateKeranjangTable extends Migration
             $table->unsignedBigInteger('barang_id');
             $table->unsignedBigInteger('varian_id')->nullabel();
             $table->unsignedBigInteger('user_id');
+            $table->integer('qty')->unsign();
+            $table->integer('total')->unsign();
             $table->timestamps();
             $table->softDeletes();
 

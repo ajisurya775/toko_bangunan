@@ -15,20 +15,18 @@ class CreateCheckoutsTable extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('keranjang_id');
             $table->unsignedBigInteger('user_id');
-            $table->char('invoice',6);
-            $table->unsignedBigInteger('desa_id');
+            $table->char('invoice',16);
+            $table->char('desa',50);
             $table->text('deskripsi_alamat');
             $table->integer('subtot')->unsign();
             $table->char('hp',20);
             $table->char('bukti_pebayaran',100);
             $table->integer('jumlah_bayar')->unsign();
-            $table->enum('status',['0','1','2','3']);
+            $table->enum('status',['1','2','3']);
             $table->timestamps();
             $table->SoftDeletes();
 
-            $table->foreign('keranjang_id')->references('id')->on('keranjang')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('no action');
         });
     }

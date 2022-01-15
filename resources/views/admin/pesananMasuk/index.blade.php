@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                <span class="badge badge-pill badge-success">Info</span> Pada kolom status terdapat 4 status yaitu <span class="badge bg-warning text-white">Menunggu</span> <span class="badge bg-info text-white">Proses</span> <span class="badge bg-success text-white">Dikirim</span> dan <span class="badge bg-danger text-white">Ditolak</span> untuk pesanan yang tidak bisa di proses pesanannya!</b>.
+                <span class="badge badge-pill badge-success">Info</span> Pada kolom status terdapat 3 status yaitu <span class="badge bg-warning text-white">Menunggu</span> <span class="badge bg-success text-white">Dikirim</span> dan <span class="badge bg-danger text-white">Ditolak</span></b>.
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -50,20 +50,20 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>1</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>Aji surya</td>
                     <td>Rp 3000.000</td>
                     <td><span class="badge bg-warning">Menunggu</span></td>
                     <td class="text-center">
-                    <a href="#" class="btn btn-warning btn-sm">
+                    <a href="{{ route('detail.pesanan')}}" class="btn btn-warning btn-sm">
                     <i class="fa fa-eye"></i></a>
                     <a href="" class="btn btn-info btn-sm">
                         <i class="fa fa-print"></i></a>
                         <a href="" class="btn btn-danger btn-sm">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </a>
-                        <a href="" class="btn btn-info btn-sm">
-                            <i class="fa fa-spinner" aria-hidden="true"></i>
+                        <a href="" class="btn btn-success btn-sm">
+                            <i class="fa fa-check" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>

@@ -25,44 +25,46 @@
     <div class="container">
         <div class="row"> 
             <div class="col-lg-8 col-12">
+                @include('components.alert')
                 <div class="checkout-form">
                     <h2>Checkout Pesanan Anda</h2>
                     <p>Silahkan isi form ini agar barang bisa langsung diproses!</p>
                     <!-- Form -->
-                    <form class="form" method="post" action="#">
+                    <form class="form" method="post" action="{{ route('checkout.aksi')}}" id="aksi" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nomor Invoice<span>*</span></label>
-                                    <input type="text" name="name" value="{{ $order->code}}" required="required">
+                                    <input type="text" name="inv" value="{{ $nomer }}" required readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nama<span>*</span></label>
-                                    <input type="text" name="name" value="{{ Auth::user()->name}}" required="required">
+                                    <input type="text" value="{{ Auth::user()->name}}" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nama Desa<span>*</span></label>
-                                    <input type="email" name="email"  required="required">
+                                    <input type="email" name="desa"  required>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Deskripsi Alamat<span>*</span></label>
-                                    <textarea name="" id="" cols="10" rows="5"></textarea>
+                                    <textarea name="alamat" id="" cols="10" rows="5"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nomor Handphone<span>*</span></label>
-                                    <input type="number" name="number"  required="required">
+                                    <input type="number" name="hp"  required>
                                 </div>
                             </div>
                         </div>
-                    </form>
                     <!--/ End Form -->
                 </div>
             </div>
@@ -80,18 +82,19 @@
                                     }
                                 @endphp
                                 <li>Sub Total<span>Rp {{ number_format($subtotal) }}</span></li>
-                                <input type="hidden" value="">
+                                <input type="hidden" name="subtot" value="{{$subtotal}}">
                                 <li>Jumlah Bayar <input type="number" name="bayar"></li>
                                 <li>Bukti Pembayaran <input type="file" name="gambar"></li>
                             </ul>
                         </div>
                     </div>
+                </form>
                     <!--/ End Order Widget -->
                     <!-- Button Widget -->
                     <div class="single-widget get-button">
                         <div class="content">
                             <div class="button">
-                                <a href="history.html" class="btn">proceed to checkout</a>
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('aksi').submit();" class="btn">proceed to checkout</a>
                             </div>
                         </div>
                     </div>

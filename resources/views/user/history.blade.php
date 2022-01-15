@@ -25,8 +25,9 @@
     <div class="container">
         <div class="row">
           <div class="col-lg-12 col-12 col-sm-4">
+            @include('components.alert')
             <table class="table">
-              <thead class="thead-dark">
+              <thead class="thead-light">
                 <tr>
                   <th scope="col">No</th>
                   <th scope="col">Tanggal Pembelian</th>
@@ -35,42 +36,30 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Rabu 23 desember 2021</td>
-                  <td>Rp 20000000</td>
-                  <td>
-                    <span class="badge bg-warning">Menunggu</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Rabu 23 desember 2021</td>
-                  <td>Rp 20000000</td>
-                  <td>
-                    <span class="badge bg-warning">Menunggu</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Rabu 23 desember 2021</td>
-                  <td>Rp 20000000</td>
-                  <td>
-                    <span class="badge bg-warning">Menunggu</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Rabu 23 desember 2021</td>
-                  <td>Rp 20000000</td>
-                  <td>
-                    <span class="badge bg-warning">Menunggu</span>
-                  </td>
-                </tr>
+               @forelse ($checkout as $item)
+               <tr>
+                <th scope="row">{{ $loop->iteration }}</th>
+                <td>{{ $item->created_at->format('d-m-Y')}}</td>
+                <td>Rp {{ number_format($item->subtot, 0,',','.')}}</td>
+                <td>
+                  @if ($item->status)
+                  <span class="badge bg-warning">Menunggu</span>
+                  @else
+                  <span class="badge bg-warning">selesai</span> 
+                  @endif
+                  
+                </td>
+              </tr>
+               @empty
+                   <tr>
+                     <td></td>
+                     <td><h3>Tidak ada histori transaksi </h3></td>
+                   </tr>
+               @endforelse
               </tbody>
             </table>
           </div>
         </div>
     </div>
-</section><br><br>
+</section><br><br><br><br><br><br><br><br><br><br><br><br>
 @endsection

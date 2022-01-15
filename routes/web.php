@@ -31,10 +31,18 @@ use App\Http\Controllers\UserController;
 // })->middleware(['auth'])->name('/');
 Route::get('/', [UserDashboard::class, 'index'])->name('/');
 Route::get('produk', [ProdukController::class, 'index'])->name('produk');
-Route::get('history', [HistoryController::class, 'index'])->name('history');
+
 Route::get('keranjang', [KeranjangController::class, 'index'])->name('keranjang');
 Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
+
+//route histori belanja
+Route::get('history', [HistoryController::class, 'index'])->name('history');
+
+//routing checkout
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('checkout-aksi', [CheckoutController::class, 'proses'])->name('checkout.aksi');
+
+//routing keranjang
 Route::get('detail/{id}', [UserDashboard::class, 'detail'])->name('detail');
 Route::get('varian-barang/{id}', [UserDashboard::class, 'varian'])->name('varian');
 Route::post('barang-aksi/{id}', [UserDashboard::class, 'create'])->name('barang.aksi');
@@ -47,6 +55,7 @@ Route::get('dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
 
 //routing pesanan masuk
 Route::get('pesanan', [PesananController::class, 'index'])->name('pesanan');
+Route::get('detail', [PesananController::class, 'create'])->name('detail.pesanan');
 
 //data-barang
 Route::get('data-barang', [BarangController::class, 'index'])->name('data.barang');

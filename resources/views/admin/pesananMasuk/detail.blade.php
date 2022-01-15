@@ -93,7 +93,7 @@
         <div class="col-md-12">
 
             <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                <span class="badge badge-pill badge-success">Info</span> Pada kolom status terdapat 4 status yaitu <span class="badge bg-warning">Menunggu</span> <span class="badge bg-info">Proses</span> <span class="badge bg-success">Dikirim</span> dan <span class="badge bg-danger">Ditolak</span> untuk pesanan yang tidak bisa di proses pesanannya!</b>.
+                <span class="badge badge-pill badge-success">Info</span> Pada kolom status terdapat 3 status yaitu <span class="badge bg-warning text-white">Menunggu</span> <span class="badge bg-success text-white">Dikirim</span> dan <span class="badge bg-danger text-white">Ditolak</span></b>.
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -109,7 +109,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Barang</th>
-                    <th>Gambar</th>
+                    <th>Bukti pembayaran</th>
                     <th>Qty</th>
                     <th>Status</th>
                 </tr>

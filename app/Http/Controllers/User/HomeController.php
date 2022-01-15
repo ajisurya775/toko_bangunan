@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Varian;
 use App\Models\Keranjang;
+use App\Models\CheckoutDetail;
 use Auth;
 
 class HomeController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         $bahan =  Barang::where('kategori_id','2')->simplePaginate(12);
         $listrik =  Barang::where('kategori_id','1')->simplePaginate(12);
@@ -64,15 +65,16 @@ class HomeController extends Controller
             $subtot = $harga * $qty;
 
             Keranjang::create([
-                'barang_id' =>$id,
-                'user_id' =>Auth::id(),
-                'qty'=>$qty,
-                'total'=>$subtot,
+                'barang_id' => $id,
+                'user_id' => Auth::id(),
+                'qty' => $qty,
+                'total' => $subtot,
             ]);
         }
          else
         {
-            $keranjang = Keranjang::where('barang_id', $id)->where('user_id', Auth::id())->first();
+            $keranjang = Keranjang::where('barang_id', $id)->where('user_id', Auth::id())
+            ->where('status', 0)->first();
             $barang = Barang::where('id', $id)->first();
 
             //calculate total harga
