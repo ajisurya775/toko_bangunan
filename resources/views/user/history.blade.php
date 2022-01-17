@@ -33,22 +33,25 @@
                   <th scope="col">Tanggal Pembelian</th>
                   <th scope="col">Total Beli</th>
                   <th scope="col">Status</th>
+                  <th scope="col"><i class="fa fa-print"></i></th>
                 </tr>
               </thead>
               <tbody>
                @forelse ($checkout as $item)
                <tr>
                 <th scope="row">{{ $loop->iteration }}</th>
-                <td>{{ $item->created_at->format('d-m-Y')}}</td>
+                <td>{{ $item->created_at->format('D-m-Y')}}</td>
                 <td>Rp {{ number_format($item->subtot, 0,',','.')}}</td>
                 <td>
-                  @if ($item->status)
-                  <span class="badge bg-warning">Menunggu</span>
+                  @if ($item->status == 1)
+                  <span class="badge bg-warning text-white">Menunggu</span>
+                  @elseif ($item->status == 2)
+                  <span class="badge bg-success text-white">Dikirim</span> 
                   @else
-                  <span class="badge bg-warning">selesai</span> 
+                  <span class="badge bg-danger text-white">Ditolak</span>
                   @endif
-                  
                 </td>
+                <td><a href="#">cetak</a></td>
               </tr>
                @empty
                    <tr>

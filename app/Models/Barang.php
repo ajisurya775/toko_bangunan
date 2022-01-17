@@ -39,5 +39,14 @@ class Barang extends Model
    {
        return $this->hasMany(keranjang::class);
    }
+   /**
+    * Get the user that owns the Barang
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+   public function user(): BelongsTo
+   {
+       return $this->belongsTo(User::class);
+   }
 
 }

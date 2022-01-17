@@ -55,7 +55,7 @@ Route::get('dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
 
 //routing pesanan masuk
 Route::get('pesanan', [PesananController::class, 'index'])->name('pesanan');
-Route::get('detail', [PesananController::class, 'create'])->name('detail.pesanan');
+Route::get('detail-pesanan/{invoice}', [PesananController::class, 'create'])->name('detail.pesanan');
 
 //data-barang
 Route::get('data-barang', [BarangController::class, 'index'])->name('data.barang');

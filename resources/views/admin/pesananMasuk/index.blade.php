@@ -49,24 +49,37 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach ($checkout as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>Aji surya</td>
-                    <td>Rp 3000.000</td>
-                    <td><span class="badge bg-warning">Menunggu</span></td>
+                    <td>{{ $item->user->name}}</td>
+                    <td>Rp{{ number_format($item->subtot)}}</td>
+                    <td>
+                        @if ($item->status == 1)
+                        <span class="badge bg-warning text-white">Menunggu</span>
+                        @elseif ($item->status == 2)
+                        <span class="badge bg-success text-white">Dikirim</span>
+                        @else
+                        <span class="badge bg-danger text-white">Ditolak</span>
+                        @endif
+                    </td>
                     <td class="text-center">
-                    <a href="{{ route('detail.pesanan')}}" class="btn btn-warning btn-sm">
+
+                    <a href="{{ route('detail.pesanan',$item->invoice)}}" class="btn btn-warning btn-sm">
                     <i class="fa fa-eye"></i></a>
+
                     <a href="" class="btn btn-info btn-sm">
                         <i class="fa fa-print"></i></a>
+
                         <a href="" class="btn btn-danger btn-sm">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </a>
+                            <i class="fa fa-times" aria-hidden="true"></i></a>
+                            
                         <a href="" class="btn btn-success btn-sm">
                             <i class="fa fa-check" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

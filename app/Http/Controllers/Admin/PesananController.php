@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Checkout;
+use App\Models\CheckoutDetail;
 
 class PesananController extends Controller
 {
@@ -15,7 +16,7 @@ class PesananController extends Controller
      */
     public function index()
     {
-        $checkout = Checkout::where('status', 1)->get();
+        $checkout = Checkout::first()->get();
         return view('admin.pesananMasuk.index', compact('checkout'));
     }
 
@@ -24,10 +25,13 @@ class PesananController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $invoice)
     {
         //
-        return view('admin.pesananMasuk.detail');
+        $checkoutdetail = CheckoutDetail::where('inv', $invoice)->get();
+
+        $checkout = Checkout::where('invoice', $invoice)->first();
+        return view('admin.pesananMasuk.detail', compact('checkout','checkoutdetail'));
     }
 
     /**

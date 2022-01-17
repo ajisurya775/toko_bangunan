@@ -41,22 +41,22 @@
                             <tr>
                                 <th>Nomor Invoice</th>
                                 <th width="50px">:</th>
-                                <th>LPKK261441</th>
+                                <th>{{ $checkout->invoice}}</th>
                             </tr>
                             <tr>
                                 <th>Nama Pelanggan</th>
                                 <th>:</th>
-                                <th>Aji surya</th>
+                                <th>{{ $checkout->user->name}}</th>
                             </tr>
                             <tr>
-                                <th>Email</th>
+                                <th>Bukti Pembayaran</th>
                                 <th>:</th>
-                                <th>ajisurya331@gmail.com</th>
+                                <th><a href="{{ url('bukti_pembayaran',$checkout->bukti_pebayaran)}}" target="_blank">Cek pembayaran</a></th>
                             </tr>
                             <tr>
                                 <th>Sub Total</th>
                                 <th>:</th>
-                                <th>Rp 3000.000</th>
+                                <th>Rp{{ number_format($checkout->subtot)}}</th>
                             </tr>
                         </table>
                         </div>
@@ -65,22 +65,35 @@
                                 <tr>
                                     <th>Tanggal</th>
                                     <th width="50px">:</th>
-                                    <th>16 des 2021</th>
+                                    <th>{{$checkout->created_at->format('d-m-Y')}}</th>
                                 </tr>
                                 <tr>
                                     <th>Desa</th>
                                     <th>:</th>
-                                    <th>Melati II</th>
+                                    <th>{{$checkout->desa}}</th>
                                 </tr>
                                 <tr>
                                     <th>Alamat Lengkap</th>
                                     <th>:</th>
-                                    <th>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque autem, deserunt laborum maiores vero necessitatibus earum atque </th>
+                                    <th>{{$checkout->deskripsi_alamat}} </th>
                                 </tr>
                                 <tr>
                                     <th>No Tlp</th>
                                     <th>:</th>
-                                    <th>081959129981</th>
+                                    <th>{{$checkout->hp}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>:</th>
+                                    <th>
+                                        @if ($checkout->status == 1)
+                                        <span class="badge bg-warning text-white">Menunggu</span>
+                                        @elseif ($checkout->status == 2)
+                                        <span class="badge bg-success text-white">Dikirim</span>
+                                        @else
+                                        <span class="badge bg-danger text-white">Ditolak</span>
+                                        @endif
+                                    </th>
                                 </tr>
                             </table>
                         </div>
@@ -109,21 +122,21 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Barang</th>
-                    <th>Bukti pembayaran</th>
+                    <th>Gambar</th>
                     <th>Qty</th>
-                    <th>Status</th>
+                    <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
+                @foreach ($checkoutdetail as $item)
                 <tr>
-                    <td>1</td>
-                    <td>Batu Bata</td>
-                    <td><img src="" alt=""></td>
-                    <td>3000</td>
-                    <td>
-                        <span class="badge bg-warning">Menunggu</span>
-                    </td>
-                </tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ (is_null($item->varian_id)? $item->barang->nama_barang : $item->varian->nama_varian) }}</td>
+                    <td><img src="{{ is_null($item->varian_id) ? url('data_barang',$item->barang->gambar) : url('data_varian',$item->varian->gambar_varian) }}" alt="" style="height: 50px;width: 50px;"></td>
+                    <td>{{ $item->qty}}</td>
+                    <td>Rp {{number_format( $item->total)}}</td>
+                </tr>     
+                @endforeach
                 </tbody>
             </table>
         </div>

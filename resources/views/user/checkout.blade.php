@@ -37,31 +37,40 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nomor Invoice<span>*</span></label>
-                                    <input type="text" name="inv" value="{{ $nomer }}" required readonly>
+                                    <input type="text" name="inv" value="{{ $nomer }}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nama<span>*</span></label>
-                                    <input type="text" value="{{ Auth::user()->name}}" required>
+                                    <input type="text" name="nama" value="{{ Auth::user()->name}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nama Desa<span>*</span></label>
-                                    <input type="email" name="desa"  required>
+                                    <input type="text" name="desa" >
+                                    @if ($errors->has('desa'))
+                                        <p class="text-danger">{{ $errors->first('desa')}}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Deskripsi Alamat<span>*</span></label>
                                     <textarea name="alamat" id="" cols="10" rows="5"></textarea>
+                                    @if ($errors->has('alamat'))
+                                        <p class="text-danger">{{ $errors->first('alamat')}}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nomor Handphone<span>*</span></label>
-                                    <input type="number" name="hp"  required>
+                                    <input type="text" name="hp">
+                                    @if ($errors->has('hp'))
+                                        <p class="text-danger">{{ $errors->first('hp')}}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -84,7 +93,13 @@
                                 <li>Sub Total<span>Rp {{ number_format($subtotal) }}</span></li>
                                 <input type="hidden" name="subtot" value="{{$subtotal}}">
                                 <li>Jumlah Bayar <input type="number" name="bayar"></li>
+                                @if ($errors->has('bayar'))
+                                    <li><p class="text-danger">{{ $errors->first('bayar')}}</p></li>
+                                @endif
                                 <li>Bukti Pembayaran <input type="file" name="gambar"></li>
+                                @if ($errors->has('gambar'))
+                                    <li><p class="text-danger">{{ $errors->first('gambar')}}</p></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
