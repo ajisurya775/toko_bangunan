@@ -33,6 +33,7 @@
                       <span aria-hidden="true">&times;</span>
                   </button>
               </div>
+              @include('components.alert')
             <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Pesanan Masuk</strong>
@@ -71,12 +72,18 @@
                     <a href="" class="btn btn-info btn-sm">
                         <i class="fa fa-print"></i></a>
 
-                        <a href="" class="btn btn-danger btn-sm">
-                            <i class="fa fa-times" aria-hidden="true"></i></a>
-                            
-                        <a href="" class="btn btn-success btn-sm">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </a>
+                    @if ($item->status == 1)
+                    <form action="{{ route('tolak.pesanan',$item->id)}}" class="d-inline" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    </form>
+
+                    <form action="{{ route('terima.pesanan',$item->id)}}" class="d-inline" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check" aria-hidden="true"></i></i></button>
+                    </form>
+        
+                    @endif
                     </td>
                 </tr>
                 @endforeach

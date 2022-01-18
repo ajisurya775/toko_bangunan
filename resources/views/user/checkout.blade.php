@@ -49,7 +49,12 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nama Desa<span>*</span></label>
-                                    <input type="text" name="desa" >
+                                    <select name="desa" id="">
+                                        <option value="">Pilih</option>
+                                        @foreach ($jangkau as $item)
+                                        <option value="{{ $item->nama_Desa}}">{{ $item->nama_Desa}}</option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('desa'))
                                         <p class="text-danger">{{ $errors->first('desa')}}</p>
                                     @endif
@@ -58,7 +63,7 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Deskripsi Alamat<span>*</span></label>
-                                    <textarea name="alamat" id="" cols="10" rows="5"></textarea>
+                                    <textarea name="alamat" id="" cols="10" rows="5">{{ old('alamat')}}</textarea>
                                     @if ($errors->has('alamat'))
                                         <p class="text-danger">{{ $errors->first('alamat')}}</p>
                                     @endif
@@ -67,7 +72,7 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nomor Handphone<span>*</span></label>
-                                    <input type="text" name="hp">
+                                    <input type="text" name="hp" value="{{ old('hp')}}">
                                     @if ($errors->has('hp'))
                                         <p class="text-danger">{{ $errors->first('hp')}}</p>
                                     @endif
@@ -92,11 +97,12 @@
                                 @endphp
                                 <li>Sub Total<span>Rp {{ number_format($subtotal) }}</span></li>
                                 <input type="hidden" name="subtot" value="{{$subtotal}}">
-                                <li>Jumlah Bayar <input type="number" name="bayar"></li>
+                                <li>Jumlah Bayar <input type="number" name="bayar" value="{{ old('bayar')}}"></li>
                                 @if ($errors->has('bayar'))
                                     <li><p class="text-danger">{{ $errors->first('bayar')}}</p></li>
                                 @endif
-                                <li>Bukti Pembayaran <input type="file" name="gambar"></li>
+                                <li>No Rekening Bri <span>1562248711553 Nanang</span></li>
+                                <li>Bukti Pembayaran <input type="file" name="gambar" value="{{ old('gambar')}}"></li>
                                 @if ($errors->has('gambar'))
                                     <li><p class="text-danger">{{ $errors->first('gambar')}}</p></li>
                                 @endif

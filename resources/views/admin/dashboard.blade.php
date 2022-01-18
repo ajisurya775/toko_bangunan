@@ -37,7 +37,7 @@
                         <div class="stat-icon dib"><i class="fa fa-paper-plane text-primary border-primary"></i></div>
                         <div class="stat-content dib">
                             <div class="stat-text">Pesanan Masuk</div>
-                            <div class="stat-digit">1,012</div>
+                            <div class="stat-digit">{{ $pesanan_masuk }}</div>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <div class="stat-icon dib"><i class="fa fa-server text-danger border-danger"></i></div>
                         <div class="stat-content dib">
                             <div class="stat-text">Data Barang</div>
-                            <div class="stat-digit">961</div>
+                            <div class="stat-digit">{{ $jumlah_barang }}</div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                         <div class="stat-icon dib"><i class="fa fa-share-alt text-warning border-warning"></i></div>
                         <div class="stat-content dib">
                             <div class="stat-text">Kategori</div>
-                            <div class="stat-digit">770</div>
+                            <div class="stat-digit">{{$jumlah_kategori}}</div>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                         <div class="stat-icon dib"><i class="fa fa-map-marker text-success border-success"></i></div>
                         <div class="stat-content dib">
                             <div class="stat-text">Jangkauan</div>
-                            <div class="stat-digit">2,781</div>
+                            <div class="stat-digit">{{ $jumlah_jangkauan }}</div>
                         </div>
                     </div>
                 </div>

@@ -5,30 +5,30 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><h3>App UD.rizki</h3></a>
-            <a class="navbar-brand hidden" href="./"><h3>R</h3></a>
+            <a class="navbar-brand" href="{{ route('dashboard')}}"><h3>App UD.rizki</h3></a>
+            <a class="navbar-brand hidden" href="{{ route('dashboard')}}"><h3>R</h3></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="{{ request()->is('dashboard')? 'active':''}}">
                     <a href="{{ route('dashboard')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
                 <h3 class="menu-title">Menu</h3><!-- /.menu-title -->
-                <li>
+                <li class="{{ request()->is('pesanan')? 'active':''}}">
                     <a href="{{ route('pesanan')}}"> <i class="menu-icon fa fa-paper-plane" aria-hidden="true"></i>Pesanan Masuk </a>
                 </li>
-                <li class="">
+                <li class="{{ request()->is('data-barang')? 'active':''}}">
                     <a href="{{ route('data.barang')}}"> <i class="menu-icon fa fa-server" aria-hidden="true"></i>Data Barang </a>
                 </li>
-                <li>
+                <li class="{{ request()->is('kategori')? 'active':''}}">
                   <a href="{{ route('kategori')}}"> <i class="menu-icon fa fa-share-alt" aria-hidden="true"></i>Kategori </a>
               </li>
-              <li>
+              <li class="{{ request()->is('jangkauan')? 'active':''}}">
                 <a href="{{ route('jangkauan')}}"> <i class="menu-icon fa fa-map-marker" aria-hidden="true"></i>Jangkauan </a>
             </li>
-                <li>
-                    <a href="#"> <i class="menu-icon fa fa-address-book" aria-hidden="true"></i></i>Laporan Penjualan </a>
+                <li class="{{ request()->is('laporan')? 'active':''}}">
+                    <a href="{{ route('laporan')}}"> <i class="menu-icon fa fa-address-book" aria-hidden="true"></i></i>Laporan Penjualan </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

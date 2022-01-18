@@ -16,7 +16,7 @@ class PesananController extends Controller
      */
     public function index()
     {
-        $checkout = Checkout::first()->get();
+        $checkout = Checkout::orderBy('status', 'asc')->get();
         return view('admin.pesananMasuk.index', compact('checkout'));
     }
 
@@ -62,9 +62,15 @@ class PesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $checkout = Checkout::find($id);
+        $checkout->status = 2;
+        $checkout->update();
+        
+        $request->Session()->flash('success',"Pesanan berhasil diterima.!");
+
+        return redirect()->route('pesanan');
     }
 
     /**
@@ -76,7 +82,13 @@ class PesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $checkout = Checkout::find($id);
+        $checkout->status = 3;
+        $checkout->update();
+        
+        $request->Session()->flash('success',"Pesanan berhasil ditolak.!");
+
+        return redirect()->route('pesanan');
     }
 
     /**

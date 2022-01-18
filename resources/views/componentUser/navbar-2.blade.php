@@ -141,12 +141,12 @@
                                     <div class="nav-inner">	
                                         <ul class="nav main-menu menu navbar-nav">
                                             <li><a href="{{ route('/')}}">Beranda</a></li>
-                                            <li><a href="{{ route('produk')}}">Produk</a></li>												
+                                            <li class="{{ request()->is('produk')? 'active':''}}"><a href="{{ route('produk')}}">Produk</a></li>												
                                             @auth
-                                            <li><a href="{{ route('keranjang')}}">Keranjang</a><span class="new">New</span></li>
-                                            <li><a href="{{ route('history')}}">Histori Belanja</a></li>
+                                            <li class="{{ request()->is('keranjang')? 'active':''}}"><a href="{{ route('keranjang')}}">Keranjang</a><span class="new">New</span></li>
+                                            <li class="{{ request()->is('history')? 'active':''}}"><a href="{{ route('history')}}">Histori Belanja</a></li>
                                             @endauth									
-                                            <li><a href="{{ route('kontak')}}">Kontak Kami</a></li>
+                                            <li class="{{ request()->is('kontak')? 'active':''}}"><a href="{{ route('kontak')}}">Kontak Kami</a></li>
                                             @auth
                                             <li>
                                                 <a class="nav-link d-block d-md-none" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>

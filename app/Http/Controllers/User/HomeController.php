@@ -73,8 +73,7 @@ class HomeController extends Controller
         }
          else
         {
-            $keranjang = Keranjang::where('barang_id', $id)->where('user_id', Auth::id())
-            ->where('status', 0)->first();
+            $keranjang = Keranjang::where('barang_id', $id)->where('user_id', Auth::id())->first();
             $barang = Barang::where('id', $id)->first();
 
             //calculate total harga

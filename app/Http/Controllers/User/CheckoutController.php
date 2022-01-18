@@ -32,15 +32,15 @@ class CheckoutController extends Controller
             $urut = (int)substr($ambil->invoice, -8) + 1;
             $nomer = 'INV' . $thnbulan . $urut;
         }
-
+        $jangkau = Jangkauan::all();
         $keranjang = Keranjang::where('user_id', Auth::id())->get();
-        return view('user.checkout', compact('keranjang','nomer'));
+        return view('user.checkout', compact('keranjang','nomer','jangkau'));
     }
     public function proses(Store $request)
     {
-        $jangkau = Jangkauan::all();
-        if ($request->desa !== $jangkau->nama_Desa ) {
-            $request->Session()->flash('error',"Maaf {$request->desa} tidak dapat di jangkau oleh kami.!");
+        $jangkau = Jangkauan::where('nama_Desa', $request->desa)->get();
+        if (!$jangkau ) {
+            $request->Session()->flash('error',"Maaf desa {$request->desa} tidak dapat di jangkau oleh kami.!");
             return redirect()->route('checkout');
         }
 
@@ -55,6 +55,7 @@ class CheckoutController extends Controller
             $request->Session()->flash('error',"Maaf anda masih memiliki tagihan.!");
             return redirect()->route('history');
         }
+
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('bukti_pembayaran'), $new_image);
