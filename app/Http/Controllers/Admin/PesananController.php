@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Checkout;
 use App\Models\CheckoutDetail;
+use Mail;
+use App\Mail\PesananTerima\Terima;
+use App\Mail\Pesanan\Tolak;
 
 class PesananController extends Controller
 {
@@ -68,6 +71,7 @@ class PesananController extends Controller
         $checkout->status = 2;
         $checkout->update();
         
+        Mail::to($checkout->user->email)->send(new Terima($checkout));
         $request->Session()->flash('success',"Pesanan berhasil diterima.!");
 
         return redirect()->route('pesanan');
@@ -86,6 +90,7 @@ class PesananController extends Controller
         $checkout->status = 3;
         $checkout->update();
         
+        Mail::to($checkout->user->email)->send(new Tolak($checkout));
         $request->Session()->flash('success',"Pesanan berhasil ditolak.!");
 
         return redirect()->route('pesanan');

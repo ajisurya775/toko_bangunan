@@ -16,10 +16,11 @@ class CreateCheckoutdetailTable extends Migration
         Schema::create('checkoutdetail', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('barang_id');
-            $table->unsignedBigInteger('varian_id')->nullabel();
+            $table->unsignedBigInteger('varian_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->integer('qty')->unsign();
             $table->integer('total')->unsign();
+            $table->char('inv', 16);
             $table->timestamps();
             $table->softDeletes();
 

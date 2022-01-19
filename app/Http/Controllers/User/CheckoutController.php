@@ -13,6 +13,8 @@ use App\Models\Jangkauan;
 use App\Models\CheckoutDetail;
 use Auth;
 use File;
+use Mail;
+use App\Mail\Checkout\AfterCheckout;
 
 class CheckoutController extends Controller
 {
@@ -86,6 +88,8 @@ class CheckoutController extends Controller
            ]);
            $keranjang->forceDelete();
         }
+        
+        Mail::to(Auth::user()->email)->send(new AfterCheckout($checkout));
 
         $request->Session()->flash('success', "Terimakasih telah melakukan transaksi di toko kami.!");
         return redirect()->route('history');

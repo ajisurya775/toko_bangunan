@@ -56,7 +56,7 @@
                             <td><img src="{{ url('data_barang/'.$item->gambar)}}" alt="" style="height: 50px; width: 50px;"></td>
                             <td>{{ $item->nama_barang}}</td>
                             <td>{{ $item->stok}}</td>
-                            <td>Rp {{ $item->harga}}</td>
+                            <td>Rp {{ number_format($item->harga)}}</td>
                             <td class="text-center">
                             <div class="inline-block">
                                 <a href="{{ route('tambah.varian',$item->id)}}" class="btn btn-success btn-sm">
