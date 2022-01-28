@@ -122,8 +122,15 @@
 </section>
 <!--/ End Checkout -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog modal-sm" role="document"
+    style="
+    height : 100vh;
+    width : 100%;
+    display : flex;
+    justify-content : center;
+    align-item : center;
+    ">
+        <div class="modal-content" style="height: 400px;width: 500px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

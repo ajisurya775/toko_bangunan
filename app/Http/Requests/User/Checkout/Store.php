@@ -26,7 +26,7 @@ class Store extends FormRequest
     {
         return [
             'desa' => 'required',
-            'alamat' => 'required',
+            'alamat' => 'required|min:20',
             'hp' => 'required|numeric|digits_between:11,12,13',
             'gambar' => 'required|mimes:jpg,png,jfif,bmp,jpeg',
         ];
