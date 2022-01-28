@@ -3,7 +3,7 @@
 
 Hi {{$checkout->user->name}}
 <br>
-Selamat pesanan anda diterima oleh kami. Pesanan anda akan di antarkan oleh kurir kami sesuai dengan alamat ya itu:
+Selamat pesanan anda diterima oleh kami. Pesanan anda akan di antarkan oleh kurir kami sesuai dengan alamat yaitu:
 <br><br>
 Desa     : {{$checkout->desa}}
 <br>

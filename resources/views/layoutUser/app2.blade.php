@@ -119,5 +119,8 @@
 	<!-- Active JS -->
 	<script src="{{ asset('template_user/eshop/js/active.js')}}"></script>
 	<script src="{{ asset('template_user/eshop/aksi.js')}}"></script>
+	<script>
+		$('#mediumModal').modal('show');
+	</script>
 </body>
 </html>

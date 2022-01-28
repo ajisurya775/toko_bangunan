@@ -40,12 +40,6 @@ class CheckoutController extends Controller
     }
     public function proses(Store $request)
     {
-        $jangkau = Jangkauan::where('nama_Desa', $request->desa)->get();
-        if (!$jangkau ) {
-            $request->Session()->flash('error',"Maaf desa {$request->desa} tidak dapat di jangkau oleh kami.!");
-            return redirect()->route('checkout');
-        }
-
         if ($request->subtot < 300000) {
             $request->Session()->flash('error',"maaf untuk melakukan transakasi minimal belanja Rp300.000.!");
             return redirect()->route('checkout');
@@ -67,12 +61,10 @@ class CheckoutController extends Controller
             'user_id' => Auth::id(),
             'invoice' => $request->inv,
             'desa' =>$request->desa,
-            'invoice' => $request->inv,
             'deskripsi_alamat' =>$request->alamat,
             'subtot' => $request->subtot,
             'hp' =>$request->hp,
             'bukti_pebayaran' =>$new_image,
-            'jumlah_bayar' =>$request->bayar,
             'status' =>$status,
         ]);
         

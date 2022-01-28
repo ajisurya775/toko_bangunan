@@ -56,7 +56,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>Rp {{ number_format($item->subtot)}}</td>
-                        <td>Melati II</td>
+                        <td>{{ $item->desa }}</td>
                         <td class="text-center">
                             <a href="{{ route('detail.pesanan',$item->invoice)}}" class="btn btn-warning btn-sm">
                             <i class="fa fa-eye"></i></a>

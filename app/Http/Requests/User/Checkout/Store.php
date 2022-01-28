@@ -28,8 +28,7 @@ class Store extends FormRequest
             'desa' => 'required',
             'alamat' => 'required',
             'hp' => 'required|numeric|digits_between:11,12,13',
-            'bayar' => 'required|numeric',
-            'gambar' => 'required|mimes:jpg,png,jfif,bmp'
+            'gambar' => 'required|mimes:jpg,png,jfif,bmp,jpeg',
         ];
     }
 }
