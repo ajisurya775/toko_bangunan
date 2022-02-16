@@ -106,4 +106,12 @@ class PesananController extends Controller
     {
         //
     }
+    public function cetak($invoice)
+    {
+        $checkoutdetail = CheckoutDetail::where('inv', $invoice)->get();
+
+        $checkout = Checkout::where('invoice', $invoice)->first();
+
+        return view('cetak.cetakInvoice', compact('checkoutdetail','checkout'));
+    }
 }

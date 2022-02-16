@@ -15,6 +15,7 @@
                 <ol class="breadcrumb text-right">
                     <li><a href="{{ route('dashboard')}}">Dashboard</a></li>
                     <li><a href="{{ route('pesanan')}}">Pesanan Masuk</a></li>
+                    <li><a href="{{ route('data.barang')}}">Data Barang</a></li>
                     <li><a href="{{ route('kategori')}}">Kategori</a></li>
                     <li><a href="{{ route('jangkauan')}}">Jangkauan</a></li>
                     <li class="active">Laporan</li>
@@ -47,7 +48,7 @@
                         <th>Nama Pembeli</th>
                         <th>Sub Total</th>
                         <th>Nama Desa</th>
-                        <th>aksi</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -91,20 +92,23 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-grub">
-                            <label for="">Pilih tanggal</label>
-                            <input type="date" class="form-control">
+                            <div class="form-grub">
+                                <label for="">Pilih tanggal</label>
+                                <input type="date" name="tglawal" id="tglawal" class="form-control" required>
+                            </div>
+                            <div class="form-grub">
+                                <label for="">Pilih tanggal</label>
+                                <input type="date" name="tglakhir" id="tglakhir" class="form-control" required>
+                            </div>
                         </div>
-                        <div class="form-grub">
-                            <label for="">Pilih tanggal</label>
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-                </div>    
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-success"><i class="fa fa-print"></i> Cetak</button>
+                    </div>    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <a href="" target="_blank" onclick="this.href='/laporan-cetak/'+
+                    document.getElementById('tglawal').value+ '/'+ document.getElementById('tglakhir').value" 
+                    class="btn btn-primary">
+                    <i class="fa fa-print"> Cetak</i></a>
             </div>
         </div>
     </div>

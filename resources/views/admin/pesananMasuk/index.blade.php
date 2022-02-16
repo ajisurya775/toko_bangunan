@@ -5,7 +5,7 @@
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Dashboard</h1>
+                <h1>Pesanan Masuk</h1>
             </div>
         </div>
     </div>
@@ -15,6 +15,10 @@
                 <ol class="breadcrumb text-right">
                     <li><a href="{{ route('dashboard')}}">Dashboard</a></li>
                     <li class="active">Pesanan Masuk</li>
+                    <li><a href="{{ route('data.barang')}}">Data Barang</a></li>
+                    <li><a href="{{ route('kategori')}}">Kategori</a></li>
+                    <li><a href="{{ route('jangkauan')}}">Jangkauan</a></li>
+                    <li><a href="{{ route('laporan')}}">Laporan</a></li>
                 </ol>
             </div>
         </div>
@@ -46,7 +50,7 @@
                     <th>Nama Pembeli</th>
                     <th>Sub Total</th>
                     <th>Status</th>
-                    <th>aksi</th>
+                    <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,7 +73,7 @@
                     <a href="{{ route('detail.pesanan',$item->invoice)}}" class="btn btn-warning btn-sm">
                     <i class="fa fa-eye"></i></a>
 
-                    <a href="" class="btn btn-info btn-sm">
+                    <a href="{{ route('cetak.pesanan',$item->invoice)}}" target="_blank" class="btn btn-info btn-sm">
                         <i class="fa fa-print"></i></a>
 
                     @if ($item->status == 1)

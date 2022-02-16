@@ -13,8 +13,12 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
+                    <li><a href="{{ route('dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{ route('pesanan')}}">Pesanan Masuk</a></li>
+                    <li><a href="{{ route('data.barang')}}">Data Barang</a></li>
                     <li><a href="{{ route('kategori')}}">Kategori</a></li>
                     <li class="active">Jangkauan</li>
+                    <li><a href="{{ route('laporan')}}">Laporan</a></li>
                 </ol>
             </div>
         </div>

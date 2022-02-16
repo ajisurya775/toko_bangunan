@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('detail-pesanan/{invoice}', [PesananController::class, 'create'])->name('detail.pesanan')->middleware('ensureUserRole:admin');
     Route::post('terima-pesanan/{id}', [PesananController::class, 'edit'])->name('terima.pesanan')->middleware('ensureUserRole:admin');
     Route::post('tolak-pesanan/{id}', [PesananController::class, 'update'])->name('tolak.pesanan')->middleware('ensureUserRole:admin');
+    Route::get('cetak-pesanan/{invoice}', [PesananController::class, 'cetak'])->name('cetak.pesanan');
     //data-barang
     Route::get('data-barang', [BarangController::class, 'index'])->name('data.barang')->middleware('ensureUserRole:admin');
     Route::get('tambah-barang', [BarangController::class, 'create'])->name('tambah.barang')->middleware('ensureUserRole:admin');
@@ -96,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
 
     //laporan
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan')->middleware('ensureUserRole:admin');
+    Route::get('laporan-cetak/{tglawal}/{tglakhir}', [LaporanController::class, 'cetakLaporan'])->name('cetak');
 
 });
 

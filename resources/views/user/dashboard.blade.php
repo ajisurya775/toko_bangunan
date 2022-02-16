@@ -273,7 +273,7 @@
                         <!-- Start Single Product -->
                     <div class="single-product">
                         <div class="product-img">
-                            <a href="{ route('detail',$item->id)}}">
+                            <a href="{{ route('detail',$item->id)}}">
                                 <img class="default-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
                                 <img class="hover-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
                             </a>

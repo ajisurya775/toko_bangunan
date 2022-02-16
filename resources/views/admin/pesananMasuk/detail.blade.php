@@ -29,7 +29,7 @@
                 <div class="card-header">
                     <strong class="card-title">Detail Pesanan</strong>
                     <div class="pull-right">
-                        <a href="tambah_barang.html" class="btn btn-success btn-sm">
+                        <a href="{{ route('cetak.pesanan',$checkout->invoice)}}" target="_blank" class="btn btn-success btn-sm">
                             <i class="fa fa-print">Print</i>
                         </a>
                     </div>

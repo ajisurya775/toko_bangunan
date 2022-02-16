@@ -5,7 +5,7 @@
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Dashboard</h1>
+                <h1>Kategori</h1>
             </div>
         </div>
     </div>
@@ -13,8 +13,12 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="{{ route('dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{ route('pesanan')}}">Pesanan Masuk</a></li>
+                    <li><a href="{{ route('data.barang')}}">Data Barang</a></li>
                     <li class="active">Kategori</li>
+                    <li><a href="{{ route('jangkauan')}}">Jangkauan</a></li>
+                    <li><a href="{{ route('laporan')}}">Laporan</a></li>
                 </ol>
             </div>
         </div>
