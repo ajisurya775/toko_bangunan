@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cetak Pesanan</title>
+    <title>Invoice Pesanan {{ $checkout->user->name}}</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
 </head>
 <body>
@@ -23,20 +23,20 @@
 
             </div>
             <div class="card-body">
-                <div class="row mb-4 d-flex justify-content-beetwen">
-                    <div class="col-sm-6">
-                        <h6 class="mb-3">Dari:</h6>
+                <div class="row mb-4 justify-content-between">
+                    <div class="col-6">
+                        <h6 class="mb-3">Toko:</h6>
                         <div>
                             <strong>Toko Bangunan UD. Rizki</strong>
                         </div>
                         <div>{{ $checkout->created_at->format('d-m-Y')}}</div>
                         <div>Desa Melati II Dusun Sei Tontong</div>
-                        <div>Email: ud.rizki212@gmail.com</div>
+                        <div>Email: ud.rizki123@gmail.com</div>
                         <div>Nomor Hp : 081263487168</div>
                     </div>
 
-                    <div class="col-sm-6">
-                        <h6 class="mb-3">Untuk:</h6>
+                    <div class="col-6">
+                        <h6 class="mb-3">Pelanggan:</h6>
                         <div>
                             <strong>{{ $checkout->user->name}}</strong>
                         </div>
@@ -65,7 +65,7 @@
                                 <td class="center">{{ $loop->iteration}}</td>
                                 <td class="left strong">{{ (is_null($item->varian_id)? $item->barang->nama_barang : $item->varian->nama_varian)}}</td>
 
-                                <td class="right">{{ (is_null($item->varian_id)? $item->barang->harga : $item->varian->harga_varian)}}</td>
+                                <td class="right">Rp {{ number_format(is_null($item->varian_id)? $item->barang->harga : $item->varian->harga_varian)}}</td>
                                 <td class="center">{{ $item->qty}}</td>
                                 <td class="right">Rp {{ number_format($item->total, 0,',','.')}}</td>
                             </tr>
@@ -78,8 +78,8 @@
 
                     </div>
 
-                    <div class="col-lg-4 col-sm-5 ml-auto">
-                        <table class="table table-clear">
+                    <div class="col-6 ml-auto">
+                        <table class="table table-clear" style="margin-right: 100px;">
                             <tbody>
                                 <tr>
                                     <td>
@@ -91,7 +91,7 @@
                                         @endphp
                                         <strong>Subtotal</strong>
                                     </td>
-                                    <td class="right">Rp {{ number_format($subtotal)}}</td>
+                                    <td class="right"><strong>Rp {{ number_format($subtotal)}}</strong></td>
                                 </tr>
                             </tbody>
                         </table>
