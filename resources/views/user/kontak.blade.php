@@ -23,6 +23,7 @@
 	<!-- Start Contact -->
 	<section id="contact-us" class="contact-us section">
 		<div class="container">
+			@include('components.alert')
 				<div class="contact-head">
 					<div class="row">
 						<div class="col-lg-8 col-12">
@@ -31,36 +32,53 @@
 									<h4>Saran Dan Kritik</h4>
 									<h3>Tuliskan Pesan Anda</h3>
 								</div>
-								<form class="form" method="post" action="mail/mail.php">
+								<form class="form" method="post" action="{{ route('kontak')}}">
+									@csrf
+									@method('POST')
 									<div class="row">
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
 												<label>Nama Anda<span>*</span></label>
 												<input name="name" type="text" placeholder="">
+												@if ($errors->has('name'))
+													<p class="text-danger">{{ $errors->first('name')}}</p>
+												@endif
 											</div>
 										</div>
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
 												<label>Subjek<span>*</span></label>
 												<input name="subject" type="text" placeholder="">
+												@if ($errors->has('subject'))
+													<p class="text-danger">{{ $errors->first('subject')}}</p>
+												@endif
 											</div>
 										</div>
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
 												<label>E-mail Anda<span>*</span></label>
 												<input name="email" type="email" placeholder="">
+												@if ($errors->has('email'))
+													<p class="text-danger">{{ $errors->first('email')}}</p>
+												@endif
 											</div>	
 										</div>
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
 												<label>Nomer Handphone<span>*</span></label>
-												<input name="company_name" type="text" placeholder="">
+												<input name="hp" type="text" placeholder="">
+												@if ($errors->has('hp'))
+													<p class="text-danger">{{ $errors->first('hp') }}</p>
+												@endif
 											</div>	
 										</div>
 										<div class="col-12">
 											<div class="form-group message">
 												<label>Pesan Anda<span>*</span></label>
 												<textarea name="message" placeholder=""></textarea>
+												@if ($errors->has('message'))
+													<p class="text-danger">{{ $errors->first('message')}}</p>
+												@endif
 											</div>
 										</div>
 										<div class="col-12">

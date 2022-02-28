@@ -30,6 +30,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [UserDashboard::class, 'index'])->name('/');
 Route::get('produk', [ProdukController::class, 'index'])->name('produk');
 Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
+Route::post('kontak',[KontakController::class, 'create'])->name('kontak');
 Route::get('produk-bahan-bangunan', [ProdukController::class, 'bahan'])->name('bahan');
 Route::get('produk-alat-bangunan', [ProdukController::class, 'alat'])->name('alat');
 Route::get('produk-kelistrikan-bangunan', [ProdukController::class, 'listrik'])->name('listrik');
