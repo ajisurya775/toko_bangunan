@@ -30,6 +30,9 @@ use App\Http\Controllers\UserController;
 Route::get('/', [UserDashboard::class, 'index'])->name('/');
 Route::get('produk', [ProdukController::class, 'index'])->name('produk');
 Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
+Route::get('produk-bahan-bangunan', [ProdukController::class, 'bahan'])->name('bahan');
+Route::get('produk-alat-bangunan', [ProdukController::class, 'alat'])->name('alat');
+Route::get('produk-kelistrikan-bangunan', [ProdukController::class, 'listrik'])->name('listrik');
 
 //socialite routes
 Route::get('login-dengan-google', [UserController::class, 'google'])->name('user.login.google');
@@ -97,7 +100,7 @@ Route::middleware(['auth'])->group(function () {
 
     //laporan
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan')->middleware('ensureUserRole:admin');
-    Route::get('laporan-cetak/{tglawal}/{tglakhir}', [LaporanController::class, 'cetakLaporan'])->name('cetak');
+    Route::get('laporan-cetak', [LaporanController::class, 'cetakLaporan'])->name('cetak')->middleware('ensureUserRole:admin');
 
 });
 

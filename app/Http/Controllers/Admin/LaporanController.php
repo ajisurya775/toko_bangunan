@@ -15,11 +15,24 @@ class LaporanController extends Controller
         return view('admin.laporan.index', compact('checkout'));
     }
 
-    public function cetakLaporan($tglawal, $tglakhir)
+    public function cetakLaporan(Request $request)
     {
-        // dd("Tanggal awal : ".$tglawal, "Tanggal akhir : ".$tglakhir);
-        // $checkout = Checkout::where('status', 2)->whereBetween('created_at',[$tglawal, $tglakhir])->get();
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
 
-        // return view('cetak.cetakInvoice');
+        if ($tglawal ==  $tglakhir) {
+            $checkout = Checkout::where('status', 2)->whereDate('created_at', $tglawal)->get();
+
+        } else {
+            $checkout = Checkout::where('status', 2)->whereBetween('created_at',
+                            [$tglawal, $tglakhir])->get();
+      
+        }
+        return view('cetak.cetakLaporan', [
+            'checkout' => $checkout,
+            'tglawal' => $tglawal,
+            'tglakhir' => $tglakhir
+        ]);
+        
     }
 }

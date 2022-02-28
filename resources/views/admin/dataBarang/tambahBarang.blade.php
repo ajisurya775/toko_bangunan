@@ -85,6 +85,7 @@
                                         <div class="form-grub">
                                             <label for="">Gambar</label>
                                             <input type="file" name="gambar" id="" class="form-control {{ $errors->has('gambar')?'is-invalid':''}}" value="{{ old('gambar')?:''}}">
+                                            <label for="">Ukuran Gambar 550x750</label>
                                             @if ($errors->has('gambar'))
                                                 <p class="text-danger">{{ $errors->first('gambar')}}</p>
                                             @endif

@@ -29,7 +29,7 @@
                         <div>
                             <strong>Toko Bangunan UD. Rizki</strong>
                         </div>
-                        <div>{{ $checkout->created_at->format('d-m-Y')}}</div>
+                        <div>Tanggal : {{ $checkout->created_at->format('d-m-Y')}}</div>
                         <div>Desa Melati II Dusun Sei Tontong</div>
                         <div>Email: ud.rizki123@gmail.com</div>
                         <div>Nomor Hp : 081263487168</div>
@@ -42,7 +42,7 @@
                         </div>
                         <div>{{ $checkout->desa}}</div>
                         <div>{{ $checkout->deskripsi_alamat}}</div>
-                        <div>{{ $checkout->user->email}}</div>
+                        <div>Email : {{ $checkout->user->email}}</div>
                         <div>Nomor Hp : {{ $checkout->hp}}</div>
                     </div>
                 </div>

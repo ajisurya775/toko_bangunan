@@ -47,7 +47,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><h3>TOKO UD.RIZKI</h3></a>
+                        <a href="{{ route('/')}}"><h3>TOKO UD.RIZKI</h3></a>
                     </div>
                     <!--/ End Logo -->
                     <!-- Search Form -->
@@ -55,7 +55,7 @@
                         <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
                         <!-- Search Form -->
                         <div class="search-top">
-                            <form class="search-form">
+                            <form class="search-form" action="{{ route('produk')}}" method="GET">
                                 <input type="text" placeholder="Search here..." name="search">
                                 <button value="search" type="submit"><i class="ti-search"></i></button>
                             </form>
@@ -74,8 +74,8 @@
                                 <option>Bahan Bangunan</option>
                                 <option>Alat Bangunan</option>
                             </select>
-                            <form>
-                                <input name="search" placeholder="Search Products Here....." type="search">
+                            <form action="{{ route('produk')}}">
+                                <input name="search" placeholder="Cari Disini...." type="search" value="{{ old('search')}}">
                                 <button class="btnn"><i class="ti-search"></i></button>
                             </form>
                         </div>
@@ -140,9 +140,9 @@
                         <div class="all-category">
                             <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>Kategori</h3>
                             <ul class="main-category">
-                                <li><a href="#">Listrik</a></li>
-                                <li><a href="#">Bahan Bangunan</a></li>
-                                <li><a href="#">Alat Bangunan</a></li>
+                                <li><a href="{{ route('listrik')}}">Listrik</a></li>
+                                <li><a href="{{ route('bahan')}}">Bahan Bangunan</a></li>
+                                <li><a href="{{ route('alat')}}">Alat Bangunan</a></li>
                             </ul>
                         </div>
                     </div>

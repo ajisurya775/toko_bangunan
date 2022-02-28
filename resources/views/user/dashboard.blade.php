@@ -39,7 +39,7 @@
                     <div class="content">
                         <p></p>
                         <h3>Kelistrikan</h3>
-                        <a href="#" class="btn btn-danger text-white">Belanja Now</a>
+                        <a href="{{ route('listrik')}}" class="btn btn-danger text-white">Belanja Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     <div class="content">
                         <p></p>
                         <h3>Bahan Bangunan</h3>
-                        <a href="#" class="btn btn-danger text-white">Belanja Now</a>
+                        <a href="{{ route('bahan')}}" class="btn btn-danger text-white">Belanja Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <div class="content">
                         <p></p>
                         <h3 class="text-bold">Alat Bangunan</h3>
-                        <a href="#" class="btn btn-danger text-white">Belanja Now</a>
+                        <a href="{{ route('listrik')}}" class="btn btn-danger text-white">Belanja Sekarang</a>
                     </div>
                 </div>
             </div>

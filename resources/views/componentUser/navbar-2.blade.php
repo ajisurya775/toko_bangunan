@@ -47,7 +47,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><h3>TOKO UD.RIZKI</h3></a>
+                        <a href="{{ route('/')}}"><h3>TOKO UD.RIZKI</h3></a>
                     </div>
                     <!--/ End Logo -->
                     <!-- Search Form -->
@@ -55,8 +55,8 @@
                         <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
                         <!-- Search Form -->
                         <div class="search-top">
-                            <form class="search-form">
-                                <input type="text" placeholder="Search here..." name="search">
+                            <form class="search-form" action="{{ route('produk') }}" method="get">
+                                <input type="text" placeholder="Cari disini..." name="search" value="{{ request('search')}}">
                                 <button value="search" type="submit"><i class="ti-search"></i></button>
                             </form>
                         </div>
@@ -74,9 +74,9 @@
                                 <option>Bahan Bangunan</option>
                                 <option>Alat Bangunan</option>
                             </select>
-                            <form>
+                            <form action="{{ route('produk')}}" method="GET">
                                 <input name="search" placeholder="Search Products Here....." type="search">
-                                <button class="btnn"><i class="ti-search"></i></button>
+                                <button class="btn"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
