@@ -47,7 +47,7 @@
                             $subtotal = $subtotal + $item->total;
                         @endphp
                         <tr>
-                            <td class="image" data-title="Gambar"><img src="{{ (is_null($item->varian_id))? url('data_barang',$item->barang->gambar): url('data_varian',$item->varian->gambar_varian) }}" style="height: 100px;width: 100px;" alt="#"></td>
+                            <td class="image" data-title="Gambar"><img src="{{ (is_null($item->varian_id))? asset('storage/data_barang/'.$item->barang->gambar): asset('storage/data_varian/'.$item->varian->gambar_varian) }}" style="height: 100px;width: 100px;" alt="#"></td>
                             <td class="product-des" data-title="Nama Barang">
                                 <p class="product-name"><a href="#">{{  (is_null($item->varian_id)) ? $item->barang->nama_barang : $item->varian->nama_varian }}</a></p>
                             </td>

@@ -57,7 +57,7 @@
                     @foreach ($barang as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ url('data_barang/'.$item->gambar)}}" alt="" style="height: 50px; width: 50px;"></td>
+                            <td><img src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="" style="height: 50px; width: 50px;"></td>
                             <td>{{ $item->nama_barang}}</td>
                             <td>{{ $item->stok}}</td>
                             <td>Rp {{ number_format($item->harga)}}</td>

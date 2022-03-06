@@ -72,8 +72,8 @@
                         <div class="single-product">
                             <div class="product-img">
                                 <a href="{{ route('detail',$item->id)}}">
-                                    <img class="rounded" width="300px" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
-                                    <img class="hover-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
+                                    <img class="rounded" width="300px" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
+                                    <img class="hover-img" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
                                 </a>
                                 <div class="button-head">
                                     <div class="product-action">

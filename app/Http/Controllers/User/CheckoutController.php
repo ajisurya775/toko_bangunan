@@ -54,7 +54,7 @@ class CheckoutController extends Controller
 
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('bukti_pembayaran'), $new_image);
+        $image->storeAs('storage/bukti_pembayaran', $new_image);
         $status = 1;
 
         $checkout = Checkout::create([

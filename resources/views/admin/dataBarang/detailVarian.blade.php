@@ -59,7 +59,7 @@
                                 <tr>
                                     <th>Gambar</th>
                                     <th>:</th>
-                                    <th><img src="{{ url('data_varian/'.$item->gambar_varian)}}" alt="" style="height: 120px;width: 150px;"></th>
+                                    <th><img src="{{ asset('storage/data_varian/'.$item->gambar_varian)}}" alt="" style="height: 120px;width: 150px;"></th>
                                 </tr> 
                                 <tr><th><hr></th></tr>   
                                   <tr>

@@ -49,7 +49,7 @@ class BarangController extends Controller
        
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('data_barang'), $new_image);
+        $image->storeAs('public/data_barang', $new_image);
 
         Barang::create([
             'nama_barang'=>$request->nama_barang,
@@ -95,10 +95,10 @@ class BarangController extends Controller
         if ($request->gambar <> "") {
             $image = $request->file('gambar');
             $new_image = rand().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('data_barang'), $new_image);
+            $image->move(public_path('public/data_barang'), $new_image);
 
             $gambar = Barang::where('id', $id)->first();
-            File::delete('data_barang/'.$gambar->gambar);
+            File::delete('storage/data_barang/'.$gambar->gambar);
 
             $barang = Barang::find($id);
             $barang->nama_barang = $request->barang;
@@ -153,11 +153,10 @@ class BarangController extends Controller
 
         $varian = Varian::where('barang_id', $id)->get();
         foreach ($varian as $item) {
-            File::delete('data_varian/'.$item->gambar_varian);
+            File::delete('storage/data_varian/'.$item->gambar_varian);
         }
         
-
-        File::delete('data_barang/'.$barang->gambar);
+        File::delete('storage/data_barang/'.$barang->gambar);
        
 
         $request->Session()->flash('success',"Data berhasil di hapus");

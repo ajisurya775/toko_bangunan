@@ -76,7 +76,7 @@
                             </select>
                             <form action="{{ route('produk')}}" method="GET">
                                 <input name="search" placeholder="Search Products Here....." type="search">
-                                <button class="btn"><i class="ti-search"></i></button>
+                                <button class="btnn "><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>

@@ -105,8 +105,8 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="{{ route('detail',$item->id)}}">
-                                                        <img class="rounded" width="300px" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
-                                                        <img class="hover-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
+                                                        <img class="rounded" width="300px" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
+                                                        <img class="hover-img" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">
@@ -148,8 +148,8 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="{{ route('detail',$item->id)}}">
-                                                        <img class="rounded" width="300px" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
-                                                        <img class="hover-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
+                                                        <img class="rounded" width="300px" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
+                                                        <img class="hover-img" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">
@@ -197,8 +197,8 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="product-details.html">
-                                                        <img class="rounded" width="300px" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
-                                                        <img class="hover-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
+                                                        <img class="rounded" width="300px" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
+                                                        <img class="hover-img" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">
@@ -274,8 +274,8 @@
                     <div class="single-product">
                         <div class="product-img">
                             <a href="{{ route('detail',$item->id)}}">
-                                <img class="default-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
-                                <img class="hover-img" src="{{ url('data_barang/',$item->gambar)}}" alt="#">
+                                <img class="default-img" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
+                                <img class="hover-img" src="{{ asset('storage/data_barang/'.$item->gambar)}}" alt="#">
                             </a>
                             <div class="button-head">
                                 <div class="product-action">

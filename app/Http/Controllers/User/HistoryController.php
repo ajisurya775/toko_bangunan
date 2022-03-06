@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\checkout;
+use App\Models\Checkout;
 use Auth;
 
 class HistoryController extends Controller

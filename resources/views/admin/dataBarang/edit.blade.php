@@ -56,7 +56,7 @@
                                     <div class="form-grub">
                                         <label for="">Kategori</label>
                                         <select name="kategori" id="" class="form-control">
-                                            <option value="">{{ $barang->kategori->nama_kategori}}</option>
+                                            <option value="{{$barang->kategori->id}}">{{ $barang->kategori->nama_kategori}}</option>
                                             <option value="">-Pilih</option>
                                            
                                             @foreach ($kategori as $item)
@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="form-grub">
                                             <label for="">Gambar</label><br>
-                                            <img src="{{ url('data_barang/'.$barang->gambar)}}" alt="" style="height: 100px; width: 100px;">
+                                            <img src="{{ asset('storage/data_barang/'.$barang->gambar)}}" alt="" style="height: 100px; width: 100px;">
                                             <input type="file" name="gambar" id="" class="form-control">
                                         </div>
                                         <br>

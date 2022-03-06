@@ -51,7 +51,7 @@
                             <tr>
                                 <th>Bukti Pembayaran</th>
                                 <th>:</th>
-                                <th><a href="{{ url('bukti_pembayaran',$checkout->bukti_pebayaran)}}" target="_blank">Cek pembayaran</a></th>
+                                <th><a href="{{ asset('storage/bukti_pembayaran',$checkout->bukti_pebayaran)}}" target="_blank">Cek pembayaran</a></th>
                             </tr>
                             <tr>
                                 <th>Sub Total</th>

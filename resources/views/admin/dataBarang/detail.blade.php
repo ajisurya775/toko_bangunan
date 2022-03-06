@@ -66,7 +66,7 @@
                                         <tr>
                                             <th>Gambar</th>
                                             <th>:</th>
-                                            <th><img src="{{ url('data_barang/'.$barang->gambar)}}" alt="" style="height: 100px;width: 100px;"></th>
+                                            <th><img src="{{ asset('storage/data_barang/'.$barang->gambar)}}" alt="" style="height: 100px;width: 100px;"></th>
                                         </tr>
                                         <tr>
                                             <th><br><a href="{{ route('detail.varian',$barang->id)}}" class="btn btn-success"><i></i>detail varian</a></th>
