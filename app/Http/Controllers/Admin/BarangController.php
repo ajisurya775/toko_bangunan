@@ -9,6 +9,7 @@ use App\Models\Varian;
 use App\Http\Requests\Admin\Barang\Store;
 use Illuminate\Http\Request;
 use File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class BarangController extends Controller
 {
@@ -45,11 +46,14 @@ class BarangController extends Controller
      */
     public function store(store $request)
     {
-        //
-       
-        $image = $request->file('gambar');
-        $new_image = rand().'.'.$image->getClientOriginalExtension();
-        $image->storeAs('public/data_barang', $new_image);
+        $imageFile = $request->gambar;
+        if ($imageFile != NULL) {
+            $image = $request->file('gambar');
+            $filename = rand().'.'.$image->getClientOriginalExtension();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->fit(550, 750);
+            $image_resize->save(public_path('storage/data_barang/'. $filename));
+        }
 
         Barang::create([
             'nama_barang'=>$request->nama_barang,
@@ -57,7 +61,7 @@ class BarangController extends Controller
             'harga'=>$request->harga,
             'kategori_id'=>$request->kategori_id,
             'deskripsi'=>$request->deskripsi,
-            'gambar'=>$new_image,
+            'gambar'=>$filename,
         ]);
 
         $request->Session()->flash('success', "Data berhasil ditambahkan.!");
