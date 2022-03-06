@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Http\Requests\Admin\Varian\Store;
 use Illuminate\Http\Request;
 use File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class VarianController extends Controller
 {
@@ -41,10 +42,15 @@ class VarianController extends Controller
     public function store(Store $request, $id)
     {
         //
-        $image = $request->file('gambar_varian');
-        $new_image = rand().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('data_varian'), $new_image);
-
+        $imageFile = $request->gambar_varian;
+        if ($imageFile != NULL) {
+            $image = $request->file('gambar_varian');
+            $filename = rand().'.'.$image->getClientOriginalExtension();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->fit(550, 750);
+            $image_resize->save(public_path('storage/data_varian/'. $filename));
+        }
+        
         $barang = Barang::findOrFail($id);
         $namaBarang = $barang->nama_barang;
 
@@ -53,7 +59,7 @@ class VarianController extends Controller
             'nama_varian'=>$request->nama_varian,
             'stok_varian'=>$request->stok_varian,
             'harga_varian'=>$request->harga_varian,
-            'gambar_varian'=>$new_image, 
+            'gambar_varian'=>$filename, 
         ]);
 
         $request->Session()->flash('success',"Varian data {$barang->nama_barang} berhasil di tambahkan.!");

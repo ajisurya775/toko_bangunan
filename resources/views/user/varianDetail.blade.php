@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="image">
-                                <img src="{{ url('data_varian/',$varian->gambar_varian)}}" alt="#" style="height: 400px;width: 300px;">
+                                <img src="{{ asset('storage/data_varian/'.$varian->gambar_varian)}}" alt="#" style="height: 400px;width: 300px;">
                             </div>
                             <div class="blog-detail">
                                 <h2 class="blog-title">{{ $varian->nama_varian}}</h2>

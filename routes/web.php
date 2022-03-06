@@ -31,6 +31,8 @@ Route::get('/', [UserDashboard::class, 'index'])->name('/');
 Route::get('produk', [ProdukController::class, 'index'])->name('produk');
 Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
 Route::post('kontak',[KontakController::class, 'create'])->name('kontak');
+Route::get('detail/{id}', [UserDashboard::class, 'detail'])->name('detail');
+Route::get('varian-barang/{id}', [UserDashboard::class, 'varian'])->name('varian');
 Route::get('produk-bahan-bangunan', [ProdukController::class, 'bahan'])->name('bahan');
 Route::get('produk-alat-bangunan', [ProdukController::class, 'alat'])->name('alat');
 Route::get('produk-kelistrikan-bangunan', [ProdukController::class, 'listrik'])->name('listrik');
@@ -52,8 +54,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('checkout-aksi', [CheckoutController::class, 'proses'])->name('checkout.aksi')->middleware('ensureUserRole:user');
     
     //routing keranjang
-    Route::get('detail/{id}', [UserDashboard::class, 'detail'])->name('detail')->middleware('ensureUserRole:user');
-    Route::get('varian-barang/{id}', [UserDashboard::class, 'varian'])->name('varian')->middleware('ensureUserRole:user');
     Route::post('barang-aksi/{id}', [UserDashboard::class, 'create'])->name('barang.aksi')->middleware('ensureUserRole:user');
     Route::post('varian-aksi/{id}', [UserDashboard::class, 'vcreate'])->name('varian.aksi')->middleware('ensureUserRole:user');
     route::get('keranjang-hapus/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.hapus')->middleware('ensureUserRole:user');
