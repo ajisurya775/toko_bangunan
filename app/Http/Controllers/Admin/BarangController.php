@@ -46,14 +46,11 @@ class BarangController extends Controller
      */
     public function store(store $request)
     {
-        $imageFile = $request->gambar;
-        if ($imageFile != NULL) {
             $image = $request->file('gambar');
             $filename = rand().'.'.$image->getClientOriginalExtension();
             $image_resize = Image::make($image->getRealPath());
             $image_resize->fit(550, 750);
-            $image_resize->save(public_path('storage/data_barang/'. $filename));
-        }
+            $image_resize->save(storage_path('app/public/data_barang/'. $filename));
 
         Barang::create([
             'nama_barang'=>$request->nama_barang,

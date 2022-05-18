@@ -89,7 +89,7 @@
                             <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i><small>Hi!, {{ Auth::user()->name}}</small></a>
                         </div>
                         <div class="sinlge-bar shopping">
-                            <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+                            {{-- <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a> --}}
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
@@ -143,7 +143,7 @@
                                             <li><a href="{{ route('/')}}">Beranda</a></li>
                                             <li class="{{ request()->is('produk')? 'active':''}}"><a href="{{ route('produk')}}">Produk</a></li>												
                                             @auth
-                                            <li class="{{ request()->is('keranjang')? 'active':''}}"><a href="{{ route('keranjang')}}">Keranjang</a><span class="new">New</span></li>
+                                            <li class="{{ request()->is('keranjang')? 'active':''}}"><a href="{{ route('keranjang')}}">Keranjang</a></li>
                                             <li class="{{ request()->is('history')? 'active':''}}"><a href="{{ route('history')}}">Histori Belanja</a></li>
                                             @endauth									
                                             <li class="{{ request()->is('kontak')? 'active':''}}"><a href="{{ route('kontak')}}">Kontak Kami</a></li>

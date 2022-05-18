@@ -40,33 +40,6 @@
             </div>
             <div class="col-lg-9 col-md-8 col-12">
                 <div class="row">
-                    <div class="col-12">
-                        <!-- Shop Top -->
-                        <div class="shop-top">
-                            <div class="shop-shorter">
-                                <div class="single-shorter">
-                                    <label>Show :</label>
-                                    <select>
-                                        <option selected="selected">09</option>
-                                        <option>15</option>
-                                        <option>25</option>
-                                        <option>30</option>
-                                    </select>
-                                </div>
-                                <div class="single-shorter">
-                                    <label>Sort By :</label>
-                                    <select>
-                                        <option selected="selected">Name</option>
-                                        <option>Price</option>
-                                        <option>Size</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ End Shop Top -->
-                    </div>
-                </div>
-                <div class="row">
                     @foreach ($barang as $item)
                     <div class="col-lg-4 col-md-6 col-6">
                         <div class="single-product">
